@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://byw78cmtuqewe"]
+
+[ext_resource type="Script" uid="uid://vxfh755a8lmr" path="res://Game/Components/time display/time_display.gd" id="1_0n7gs"]
+
+[node name="TimeDisplay" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_0n7gs")
