@@ -12,3 +12,5 @@ grow_vertical = 2
 
 [node name="TimerDonut" parent="." instance=ExtResource("1_dbmlb")]
 layout_mode = 1
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(256, 256)

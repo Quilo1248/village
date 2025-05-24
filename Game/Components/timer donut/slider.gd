@@ -7,7 +7,7 @@ var held : bool = false
 
 
 func _ready() -> void:
-	offset.global_position = donut_display.global_position + donut_display.size / Vector2(2,2)
+	offset.global_position = donut_display.global_position + donut_display.size * donut_display.scale / Vector2(2,2)
 	offset.rotation_degrees = -60
 
 
