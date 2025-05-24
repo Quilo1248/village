@@ -2,14 +2,8 @@
 
 ## Contributing Guide-Lines
 
-### Naming
-We must use a consistent NamingScheme to keep this project clean
-So I chose the easiest to read and type:
-
-PascalCase.
-
-Use it for Varibles, Nodes, Scenes etc. 
-Whatever can get a name can get it in PascalCase
+### Formatting
+Just use [Godot's official styling guide](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/gdscript_styleguide.html#code-order) I Probably don't have everything memorized feel free to help out by just formatting code correctly.
 
 ### File Structure
 The entirety of The Game's code is inside the /Game Folder; Keep it that way.
