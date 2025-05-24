@@ -1,6 +1,7 @@
 extends TextureProgressBar
 
 
+var total_minutes : int = 5
 @export var colors : Array[Color]
 @onready var button: Sprite2D = $offset/slider/Button
 
@@ -9,6 +10,7 @@ func _ready() -> void:
 
 func set_value_minutes(minutes : float):
 	minutes = clamp(minutes, 5, (colors.size() - 1) * 60)
+	total_minutes = minutes
 	var laps = floor(minutes/60)
 	var relitive_value = int(minutes) % 60
 	
