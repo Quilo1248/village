@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuuvuwyvv53sd"]
 
 [ext_resource type="Script" uid="uid://dog341la8a30p" path="res://Game/Scenes/TimerManager/timer_manager.gd" id="1_ta6p7"]
-[ext_resource type="PackedScene" uid="uid://bld2jflf04ny1" path="res://Game/Components/timer donut/timer_donut.tscn" id="1_upo45"]
-[ext_resource type="PackedScene" uid="uid://byw78cmtuqewe" path="res://Game/Components/time display/time_display.tscn" id="2_8g1if"]
+[ext_resource type="PackedScene" uid="uid://bld2jflf04ny1" path="res://Game/Components/TimerDonut/timer_donut.tscn" id="1_upo45"]
+[ext_resource type="PackedScene" uid="uid://byw78cmtuqewe" path="res://Game/Components/TimeDisplay/time_display.tscn" id="2_8g1if"]
 [ext_resource type="PackedScene" uid="uid://17pt8tvyj7xm" path="res://Game/Components/Selector/selector.tscn" id="2_ivkgm"]
 
 [node name="TimerManager" type="Control"]

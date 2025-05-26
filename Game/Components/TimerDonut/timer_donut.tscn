@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bld2jflf04ny1"]
 
-[ext_resource type="Texture2D" uid="uid://cxvimfaakhh8u" path="res://Game/Art/textures/donut.tres" id="1_rf55m"]
-[ext_resource type="Script" uid="uid://bspnrsghph2tq" path="res://Game/Components/timer donut/display.gd" id="2_fy1hg"]
-[ext_resource type="Script" uid="uid://bq74ihrauvyd4" path="res://Game/Components/timer donut/slider.gd" id="3_0mkad"]
+[ext_resource type="Texture2D" uid="uid://cxvimfaakhh8u" path="res://Game/Art/Textures/donut.tres" id="1_rf55m"]
+[ext_resource type="Script" uid="uid://bspnrsghph2tq" path="res://Game/Components/TimerDonut/display.gd" id="2_fy1hg"]
+[ext_resource type="Script" uid="uid://bq74ihrauvyd4" path="res://Game/Components/TimerDonut/slider.gd" id="3_0mkad"]
 
 [sub_resource type="Gradient" id="Gradient_0mkad"]
 interpolation_mode = 1
