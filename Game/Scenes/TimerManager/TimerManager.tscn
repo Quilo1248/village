@@ -25,6 +25,8 @@ grow_vertical = 1
 
 [node name="DonutDisplay" parent="." instance=ExtResource("1_upo45")]
 layout_mode = 1
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
 size_flags_horizontal = 4
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
@@ -78,7 +80,6 @@ text = "Stop"
 [node name="SecondIncrementTimer" type="Timer" parent="."]
 
 [connection signal="selection_changed" from="Selector" to="." method="_on_selector_selection_changed"]
-[connection signal="timer_finished" from="DonutDisplay" to="." method="_on_donut_display_timer_finished"]
 [connection signal="value_changed" from="DonutDisplay" to="." method="_on_donut_display_value_changed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Stop" to="." method="_on_stop_pressed"]
