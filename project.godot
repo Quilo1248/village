@@ -15,6 +15,10 @@ run/main_scene="uid://dr7upd8t7jnlm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Game/Art/Icons/godot_icon.svg"
 
+[autoload]
+
+SaveLoad="*res://Game/Scripts/Saving/SaveLoad.gd"
+
 [display]
 
 window/size/viewport_width=324

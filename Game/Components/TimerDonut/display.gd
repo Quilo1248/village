@@ -84,7 +84,7 @@ func tick(): # call each second that the timer is on
 		if total_hours < 0:
 			emit_signal("timer_finished")
 		set_value_time(total_seconds, total_minutes, total_hours)
-		slider.offset.rotation_degrees = float(total_minutes + total_seconds/60.0) * 6.0 - 90.0
+		slider.offset.rotation_degrees = float((total_hours * 60) + total_minutes + total_seconds/60.0) * 6.0 - 90.0
 		slider.clamp_slider(timer_mode)
 
 

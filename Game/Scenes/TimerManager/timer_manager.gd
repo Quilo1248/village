@@ -52,6 +52,7 @@ func _on_start_pressed() -> void:
 
 func _on_second_increment_timer_timeout() -> void:
 	donut_display.tick()
+	
 
 
 func _on_stop_pressed() -> void:
