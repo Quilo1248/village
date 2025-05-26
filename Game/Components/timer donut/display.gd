@@ -32,7 +32,13 @@ func set_stop_watch_mode():
 
 
 func set_timer_mode():
-	reset_timer()
+	total_seconds = 0
+	total_minutes = 5
+	total_hours = 0
+	timer_mode = "Set"
+	set_colors()
+	slider.offset.rotation_degrees = -60
+	value = total_minutes
 
 
 func set_value_minutes(minutes : float):
@@ -103,10 +109,7 @@ func remove_second_from_total_time():
 
 
 func reset_timer():
-	total_seconds = 0
-	total_minutes = 5
-	total_hours = 0
-	timer_mode = "Set"
-	set_colors()
-	slider.offset.rotation_degrees = -60
-	value = total_minutes
+	if timer_mode == "CountUp":
+		set_stop_watch_mode()
+	if timer_mode == "CountDown":
+		set_timer_mode()
