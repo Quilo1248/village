@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuuvuwyvv53sd"]
+
+[ext_resource type="Script" uid="uid://dog341la8a30p" path="res://Game/Scenes/TimerManager/timer_manager.gd" id="1_ta6p7"]
+[ext_resource type="PackedScene" uid="uid://bld2jflf04ny1" path="res://Game/Components/timer donut/timer_donut.tscn" id="1_upo45"]
+[ext_resource type="PackedScene" uid="uid://byw78cmtuqewe" path="res://Game/Components/time display/time_display.tscn" id="2_8g1if"]
+[ext_resource type="PackedScene" uid="uid://17pt8tvyj7xm" path="res://Game/Components/Selector/selector.tscn" id="2_ivkgm"]
+
+[node name="TimerManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ta6p7")
+
+[node name="Selector" parent="." instance=ExtResource("2_ivkgm")]
+layout_mode = 1
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 53.885
+offset_bottom = 53.885
+grow_vertical = 1
+
+[node name="DonutDisplay" parent="." instance=ExtResource("1_upo45")]
+layout_mode = 1
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+
+[node name="TimeDisplay" parent="DonutDisplay" instance=ExtResource("2_8g1if")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "0:00:00"
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.95
+anchor_right = 0.5
+anchor_bottom = 0.95
+offset_left = -60.5
+offset_top = -75.0
+offset_right = 60.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "Start"
+
+[node name="Stop" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.95
+anchor_right = 0.5
+anchor_bottom = 0.95
+offset_left = -60.5
+offset_top = -75.0
+offset_right = 60.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "Stop"
+
+[node name="SecondIncrementTimer" type="Timer" parent="."]
+
+[connection signal="selection_changed" from="Selector" to="." method="_on_selector_selection_changed"]
+[connection signal="timer_finished" from="DonutDisplay" to="." method="_on_donut_display_timer_finished"]
+[connection signal="value_changed" from="DonutDisplay" to="." method="_on_donut_display_value_changed"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Stop" to="." method="_on_stop_pressed"]
+[connection signal="timeout" from="SecondIncrementTimer" to="." method="_on_second_increment_timer_timeout"]

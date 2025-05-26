@@ -19,4 +19,4 @@ func update_display(h, m, s):
 	var formatted_minutes = str(minutes).pad_zeros(2)
 	var formatted_seconds = str(seconds).pad_zeros(2)
 	
-	text = str(formatted_hours, ":", formatted_minutes, ";", formatted_seconds)
+	text = str(formatted_hours, ":", formatted_minutes, ":", formatted_seconds)

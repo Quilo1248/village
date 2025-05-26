@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dr7upd8t7jnlm"]
+[gd_scene load_steps=2 format=3 uid="uid://dr7upd8t7jnlm"]
 
-[ext_resource type="PackedScene" uid="uid://bld2jflf04ny1" path="res://Game/Components/timer donut/timer_donut.tscn" id="1_dbmlb"]
-[ext_resource type="PackedScene" uid="uid://byw78cmtuqewe" path="res://Game/Components/time display/time_display.tscn" id="1_ho74t"]
+[ext_resource type="PackedScene" uid="uid://cuuvuwyvv53sd" path="res://Game/Scenes/TimerManager/TimerManager.tscn" id="1_dbmlb"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -11,21 +10,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TimeDisplay" parent="." instance=ExtResource("1_ho74t")]
+[node name="TimerManager" parent="." instance=ExtResource("1_dbmlb")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TimerDonut" parent="." instance=ExtResource("1_dbmlb")]
-layout_mode = 1
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 256)
