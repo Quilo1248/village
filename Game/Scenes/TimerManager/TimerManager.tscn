@@ -76,8 +76,10 @@ theme_override_font_sizes/font_size = 48
 text = "Stop"
 
 [node name="SecondIncrementTimer" type="Timer" parent="."]
+wait_time = 0.001
 
 [connection signal="selection_changed" from="Selector" to="." method="_on_selector_selection_changed"]
+[connection signal="timer_finished" from="DonutDisplay" to="." method="_on_donut_display_timer_finished"]
 [connection signal="value_changed" from="DonutDisplay" to="." method="_on_donut_display_value_changed"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Stop" to="." method="_on_stop_pressed"]

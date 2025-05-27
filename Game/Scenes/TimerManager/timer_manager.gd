@@ -36,6 +36,7 @@ func timer_activate():
 
 func timer_deactivate():
 	donut_display.timer_mode = selector.selected
+	
 	second_increment_timer.stop()
 	
 	timer_active = false

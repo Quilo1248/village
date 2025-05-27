@@ -1,8 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bld2jflf04ny1"]
+[gd_scene load_steps=10 format=3 uid="uid://bld2jflf04ny1"]
 
 [ext_resource type="Texture2D" uid="uid://cxvimfaakhh8u" path="res://Game/Art/Textures/donut.tres" id="1_rf55m"]
+[ext_resource type="Script" uid="uid://ctc8jta4yl23f" path="res://Game/Components/TimerDonut/timer_donut.gd" id="1_skghj"]
 [ext_resource type="Script" uid="uid://bspnrsghph2tq" path="res://Game/Components/TimerDonut/display.gd" id="2_fy1hg"]
 [ext_resource type="Script" uid="uid://bq74ihrauvyd4" path="res://Game/Components/TimerDonut/slider.gd" id="3_0mkad"]
+[ext_resource type="Script" uid="uid://c5ddalgugqfs" path="res://Game/Components/TimerDonut/slider_pivot.gd" id="3_q8wm5"]
+[ext_resource type="Script" uid="uid://b6augjhxwude1" path="res://Game/Components/TimerDonut/display_manager.gd" id="6_5a31f"]
+[ext_resource type="Script" uid="uid://bbahx514epmt6" path="res://Game/Components/TimerDonut/color_manager.gd" id="7_aixva"]
 
 [sub_resource type="Gradient" id="Gradient_0mkad"]
 interpolation_mode = 1
@@ -16,33 +20,26 @@ height = 96
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[node name="DonutDisplay" type="TextureProgressBar"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 256)
+[node name="DonutTimer" type="AspectRatioContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_skghj")
+
+[node name="DonutValueDisplay" type="TextureProgressBar" parent="."]
+layout_mode = 2
 max_value = 60.0
 step = 0.0
 fill_mode = 4
 texture_under = ExtResource("1_rf55m")
 texture_progress = ExtResource("1_rf55m")
 script = ExtResource("2_fy1hg")
-colors = Array[Color]([Color(0.486275, 0.435294, 0.392157, 1), Color(0.407843, 0.615686, 0.415686, 1), Color(0.596078, 0.592157, 0.101961, 1), Color(0.843137, 0.6, 0.129412, 1), Color(0.839216, 0.364706, 0.054902, 1), Color(0.270588, 0.521569, 0.533333, 1), Color(0.694118, 0.384314, 0.52549, 1)])
 
-[node name="offset" type="Node2D" parent="."]
+[node name="SliderPivot" type="Node2D" parent="DonutValueDisplay"]
 position = Vector2(256, 256)
 rotation = -1.0472
+script = ExtResource("3_q8wm5")
 
-[node name="slider" type="Button" parent="offset"]
+[node name="SliderButton" type="Button" parent="DonutValueDisplay/SliderPivot"]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,9 +57,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("3_0mkad")
 
-[node name="Button" type="Sprite2D" parent="offset/slider"]
+[node name="ButtonSprite" type="Sprite2D" parent="DonutValueDisplay/SliderPivot/SliderButton"]
 position = Vector2(48, 48)
 texture = SubResource("GradientTexture2D_0mkad")
 
-[connection signal="button_down" from="offset/slider" to="offset/slider" method="_on_button_down"]
-[connection signal="button_up" from="offset/slider" to="offset/slider" method="_on_button_up"]
+[node name="DisplayManager" type="Node" parent="."]
+script = ExtResource("6_5a31f")
+
+[node name="ColorManager" type="Node" parent="DisplayManager"]
+script = ExtResource("7_aixva")
+
+[node name="Timer" type="Timer" parent="."]
