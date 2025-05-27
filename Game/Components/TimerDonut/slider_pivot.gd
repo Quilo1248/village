@@ -5,12 +5,14 @@ extends Node2D
 #and point in the direction of the value in other modes
 
 signal time_just_set(hours, minutes, seconds)
+@onready var color_manager: Node = $"../../DisplayManager/ColorManager"
 
 ## Makes the SliderPivot point toward the mouse and returns the converted time.
 ## returns a dictionary{"hours", "minutes", "seconds"}
 func point_mouse():
 	look_at(get_global_mouse_position())
 	rotation_degrees += 90
+	rotation_degrees = clamp(rotation_degrees, 0, (color_manager.colors.size() - 1) * 360)
 	
 	var hours : int
 	var minutes : int
