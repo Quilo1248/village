@@ -24,10 +24,16 @@ func point_mouse():
 		"seconds" : seconds,
 	}
 
-
-func point_value(hours, minutes, seconds):
-	pass
+## Takes inputs : hours, minutes, seconds [br]
+## then points itself to where that would be.
+func point_value(hours : int, minutes : int, seconds : int):
+	var total_seconds = 0
+	total_seconds += hours * 60 * 60
+	total_seconds += minutes * 60
+	total_seconds += seconds
+	rotation_degrees = total_seconds / 10 # 1 degree is 10 seconds
 
 
 func _on_slider_button_button_held() -> void:
 	point_mouse()
+	
