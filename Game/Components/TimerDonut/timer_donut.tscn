@@ -23,10 +23,13 @@ fill_from = Vector2(0.5, 0.5)
 [node name="DonutTimer" type="AspectRatioContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_skghj")
 
 [node name="DonutValueDisplay" type="TextureProgressBar" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 max_value = 60.0
 step = 0.0
 fill_mode = 4
@@ -36,7 +39,6 @@ script = ExtResource("2_fy1hg")
 
 [node name="SliderPivot" type="Node2D" parent="DonutValueDisplay"]
 position = Vector2(256, 256)
-rotation = -1.0472
 script = ExtResource("3_q8wm5")
 
 [node name="SliderButton" type="Button" parent="DonutValueDisplay/SliderPivot"]
@@ -46,10 +48,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 176.0
-offset_top = -48.0
-offset_right = 272.0
-offset_bottom = 48.0
+offset_left = -48.0
+offset_top = -270.0
+offset_right = 48.0
+offset_bottom = -174.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(48, 48)
@@ -68,3 +70,7 @@ script = ExtResource("6_5a31f")
 script = ExtResource("7_aixva")
 
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="button_down" from="DonutValueDisplay/SliderPivot/SliderButton" to="DonutValueDisplay/SliderPivot/SliderButton" method="_on_button_down"]
+[connection signal="button_held" from="DonutValueDisplay/SliderPivot/SliderButton" to="DonutValueDisplay/SliderPivot" method="_on_slider_button_button_held"]
+[connection signal="button_up" from="DonutValueDisplay/SliderPivot/SliderButton" to="DonutValueDisplay/SliderPivot/SliderButton" method="_on_button_up"]
