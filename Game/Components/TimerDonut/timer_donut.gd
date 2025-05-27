@@ -11,3 +11,8 @@ enum TimerState {
 	STOPWATCH,
 }
 var current_state = TimerState.SET
+@onready var display_manager: Node = $DisplayManager
+
+
+func _on_slider_pivot_time_just_set(hours: Variant, minutes: Variant, seconds: Variant) -> void:
+	display_manager.update_all_displays(hours, minutes, seconds)

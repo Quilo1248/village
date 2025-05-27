@@ -4,6 +4,8 @@ extends Node2D
 #it will then compute and pass the value (hours, minutes, seconds) up to DonutTimer
 #and point in the direction of the value in other modes
 
+signal time_just_set(hours, minutes, seconds)
+
 ## Makes the SliderPivot point toward the mouse and returns the converted time.
 ## returns a dictionary{"hours", "minutes", "seconds"}
 func point_mouse():
@@ -24,6 +26,7 @@ func point_mouse():
 		"seconds" : seconds,
 	}
 
+
 ## Takes inputs : hours, minutes, seconds [br]
 ## then points itself to where that would be.
 func point_value(hours : int, minutes : int, seconds : int):
@@ -35,5 +38,5 @@ func point_value(hours : int, minutes : int, seconds : int):
 
 
 func _on_slider_button_button_held() -> void:
-	point_mouse()
-	
+	var time_now = point_mouse()
+	emit_signal("time_just_set", time_now["hours"], time_now["minutes"], time_now["seconds"])
