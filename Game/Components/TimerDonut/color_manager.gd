@@ -12,4 +12,3 @@ func update_colors(hours : int, minutes : int, seconds : int):
 	button_sprite.modulate = colors[laps + 1]
 	donut_value_display.tint_under = colors[laps]
 	donut_value_display.tint_progress = colors[laps + 1]
-	
