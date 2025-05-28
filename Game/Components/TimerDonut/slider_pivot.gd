@@ -6,6 +6,7 @@ extends Node2D
 
 signal time_just_set(hours, minutes, seconds)
 @export var snap := 6.0 # degrees
+var enable_seconds := false
 @onready var color_manager: Node = $"../../DisplayManager/ColorManager"
 
 ## Makes the SliderPivot point toward the mouse and returns the converted time.
@@ -25,6 +26,11 @@ func point_mouse():
 	minutes = int(floor(rotation_degrees / 6)) % 60
 	seconds = int(floor(rotation_degrees * 10)) % 60
 	
+	if not enable_seconds:
+		if seconds != 0:
+			seconds = 0
+			minutes +=1
+		
 	return {
 		"hours" : hours,
 		"minutes" : minutes,

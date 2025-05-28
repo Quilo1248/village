@@ -31,5 +31,20 @@ text = "h:mm:ss"
 [node name="DisplayManager" type="Node" parent="."]
 script = ExtResource("5_mg0fu")
 
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = 193.0
+offset_right = 23.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Start"
+
 [connection signal="selection_changed" from="Selector" to="." method="_on_selector_selection_changed"]
 [connection signal="time_updated" from="DonutTimer" to="." method="_on_donut_timer_time_updated"]
