@@ -1,7 +1,7 @@
 extends Control
 
-signal selection_changed
-var selected := "CountDown" # using this 'CountDown'/'CountUp' to align with the timer donut script
+signal selection_changed(selection)
+var selected := "TIMER" # using this 'TIMER'/'STOPWATCH' to align with the timer donut script
 @onready var timer: Button = $HBoxContainer/Timer
 @onready var stop_watch: Button = $HBoxContainer/StopWatch
 
@@ -12,7 +12,7 @@ func _on_timer_toggled(toggled_on: bool) -> void:
 		stop_watch.disabled = false
 	stop_watch.button_pressed = false
 	
-	selected = "CountDown"
+	selected = "TIMER"
 	emit_signal("selection_changed", selected)
 
 
@@ -22,5 +22,5 @@ func _on_stop_watch_toggled(toggled_on: bool) -> void:
 		timer.disabled = false
 	timer.button_pressed = false
 	
-	selected = "CountUp"
+	selected = "STOPWATCH"
 	emit_signal("selection_changed", selected)

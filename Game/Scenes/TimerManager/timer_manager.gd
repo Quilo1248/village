@@ -7,3 +7,14 @@ extends Control
 
 func _on_donut_timer_time_updated(hours: Variant, minutes: Variant, seconds: Variant) -> void:
 	display_manager.update_displays(hours, minutes, seconds)
+
+
+func _on_selector_selection_changed(selection) -> void:
+	if selection == "TIMER":
+		selection = "SET"
+	else:
+		donut_timer.set_time(0, 0, 0)
+		display_manager.update_displays(0, 0, 0)
+	donut_timer.current_state = donut_timer.TimerState[selection]
+	
+	

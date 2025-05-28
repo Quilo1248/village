@@ -31,4 +31,5 @@ text = "h:mm:ss"
 [node name="DisplayManager" type="Node" parent="."]
 script = ExtResource("5_mg0fu")
 
+[connection signal="selection_changed" from="Selector" to="." method="_on_selector_selection_changed"]
 [connection signal="time_updated" from="DonutTimer" to="." method="_on_donut_timer_time_updated"]

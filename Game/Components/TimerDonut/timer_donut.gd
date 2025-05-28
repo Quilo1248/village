@@ -21,6 +21,7 @@ var current_hours : int = 0
 @onready var display_manager: Node = $DisplayManager
 @onready var color_manager: Node = $DisplayManager/ColorManager
 @onready var timer: Timer = $Timer
+@onready var slider_pivot: Node2D = $DonutValueDisplay/SliderPivot
 
 
 func _ready() -> void:
@@ -30,6 +31,14 @@ func _ready() -> void:
 func update_displays(): 
 	display_manager.update_all_displays(current_hours, current_minutes, current_seconds)
 
+
+func set_time(hours, minutes, seconds):
+	current_hours = hours
+	current_minutes = minutes
+	current_seconds = seconds
+	slider_pivot.point_value(hours, minutes, seconds)
+	
+	update_displays()
 
 func _on_slider_pivot_time_just_set(hours: Variant, minutes: Variant, seconds: Variant) -> void:
 	current_hours = hours
