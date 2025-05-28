@@ -24,15 +24,20 @@ var current_hours : int = 0
 
 
 func _ready() -> void:
-	display_manager.update_all_displays(0, 0, 0)
+	update_displays()
+
+
+func update_displays(): 
+	display_manager.update_all_displays(current_hours, current_minutes, current_seconds)
 
 
 func _on_slider_pivot_time_just_set(hours: Variant, minutes: Variant, seconds: Variant) -> void:
-	display_manager.update_all_displays(hours, minutes, seconds)
 	current_hours = hours
 	current_minutes = minutes
 	current_seconds = seconds
+	update_displays()
 	emit_signal("time_updated", current_hours, current_minutes, current_seconds)
+
 
 func start_timer(mode : TimerState):
 	timer.start()
@@ -41,6 +46,7 @@ func start_timer(mode : TimerState):
 	total_seconds = current_seconds
 	total_minutes = current_minutes
 	total_hours = current_hours
+
 
 func  stop_timer():
 	timer.stop()
@@ -60,7 +66,7 @@ func tick():
 	if timer_finished():
 			stop_timer()
 	
-	display_manager.update_all_displays(current_hours, current_minutes, current_seconds)
+	update_displays()
 
 
 func add_time(seconds):
@@ -78,7 +84,6 @@ func add_time(seconds):
 	if current_minutes < 0:
 		current_hours -= 1
 		current_minutes = 59
-	
 
 
 func timer_finished():
@@ -87,6 +92,7 @@ func timer_finished():
 	and current_seconds < 0 \
 	and current_state == TimerState.TIMER:
 		return true
+	
 	if current_hours >= color_manager.colors.size() \
 	and current_state == TimerState.STOPWATCH:
 		return true

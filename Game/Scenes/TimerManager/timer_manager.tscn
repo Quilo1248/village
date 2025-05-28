@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://du2drau3cs3g4"]
+
+[ext_resource type="PackedScene" uid="uid://17pt8tvyj7xm" path="res://Game/Components/Selector/selector.tscn" id="1_dqmun"]
+[ext_resource type="PackedScene" uid="uid://bld2jflf04ny1" path="res://Game/Components/TimerDonut/timer_donut.tscn" id="1_gogte"]
+[ext_resource type="Script" uid="uid://b6auyw7jc4600" path="res://Game/Scenes/TimerManager/timer_manager.gd" id="1_qbsx1"]
+[ext_resource type="PackedScene" uid="uid://byw78cmtuqewe" path="res://Game/Components/TimeDisplay/time_display.tscn" id="2_dqmun"]
+[ext_resource type="Script" uid="uid://bn8oybd87v7o5" path="res://Game/Scenes/TimerManager/display_manager.gd" id="5_mg0fu"]
+
+[node name="TimerManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qbsx1")
+
+[node name="Selector" parent="." instance=ExtResource("1_dqmun")]
+layout_mode = 1
+offset_top = -212.0
+offset_bottom = -212.0
+
+[node name="DonutTimer" parent="." instance=ExtResource("1_gogte")]
+layout_mode = 1
+
+[node name="TimeDisplay" parent="DonutTimer" instance=ExtResource("2_dqmun")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "h:mm:ss"
+
+[node name="DisplayManager" type="Node" parent="."]
+script = ExtResource("5_mg0fu")
+
+[connection signal="time_updated" from="DonutTimer" to="." method="_on_donut_timer_time_updated"]

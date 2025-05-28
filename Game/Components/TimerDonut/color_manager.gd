@@ -15,3 +15,6 @@ func update_colors(hours : int, minutes : int, seconds : int):
 	
 	if seconds == 0 and minutes == 0:
 		button_sprite.modulate = colors[laps]
+	
+	if donut_value_display.value == 60:
+		button_sprite.modulate = colors[laps + 1]

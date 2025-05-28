@@ -2,7 +2,7 @@ extends Label
 
 
 var hours : int = 0
-var minutes : int = 5
+var minutes : int = 0
 var seconds : int = 0
 
 
