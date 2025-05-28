@@ -14,5 +14,5 @@ extends Node
 
 func  update_all_displays(hours : int, minutes : int, seconds : int):
 	donut_value_display.set_value_msh(minutes, seconds, hours, color_manager.colors.size())
-	
+	slider_pivot.point_value(hours, minutes, seconds)
 	color_manager.update_colors(hours, minutes, seconds)

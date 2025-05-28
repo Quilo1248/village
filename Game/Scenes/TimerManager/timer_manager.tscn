@@ -48,3 +48,4 @@ text = "Start"
 
 [connection signal="selection_changed" from="Selector" to="." method="_on_selector_selection_changed"]
 [connection signal="time_updated" from="DonutTimer" to="." method="_on_donut_timer_time_updated"]
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

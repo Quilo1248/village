@@ -67,15 +67,21 @@ func _on_timer_timeout() -> void:
 
 func tick():
 	if current_state == TimerState.TIMER:
-		add_time(1)
+		add_time(-1)
+		
 	
 	if current_state == TimerState.STOPWATCH:
-		add_time(-1)
+		add_time(1)
 	
 	if timer_finished():
 			stop_timer()
+			current_state = TimerState.SET
+			current_hours = total_hours
+			current_minutes = total_minutes
+			current_seconds = total_seconds
 	
 	update_displays()
+	emit_signal("time_updated", current_hours, current_minutes, current_seconds)
 
 
 func add_time(seconds):
@@ -96,9 +102,7 @@ func add_time(seconds):
 
 
 func timer_finished():
-	if current_hours <= 0 \
-	and current_minutes <= 0 \
-	and current_seconds < 0 \
+	if current_hours < 0 \
 	and current_state == TimerState.TIMER:
 		return true
 	
