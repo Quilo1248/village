@@ -5,7 +5,7 @@ extends Node2D
 #and point in the direction of the value in other modes
 
 signal time_just_set(hours, minutes, seconds)
-var snap := 0.0
+@export var snap := 6.0 # degrees
 @onready var color_manager: Node = $"../../DisplayManager/ColorManager"
 
 ## Makes the SliderPivot point toward the mouse and returns the converted time.
