@@ -9,6 +9,7 @@ enum TimerState {
 @onready var time_display: Label = $"../DonutTimer/TimeDisplay"
 @onready var selector: Control = $"../Selector"
 @onready var start: Button = $"../Start"
+@onready var stop: Button = $"../Stop"
 
 func update_displays(h, m, s):
 	donut_timer.update_displays()
@@ -22,6 +23,8 @@ func hide_displays(state : TimerState):
 		time_display.show()
 		donut_timer.show()
 		start.show()
+		stop.hide()
 	else:
 		selector.hide()
 		start.hide()
+		stop.show()
