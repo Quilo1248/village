@@ -21,3 +21,4 @@ func _on_selector_selection_changed(selection) -> void:
 
 func _on_start_pressed() -> void:
 	donut_timer.start_timer(donut_timer.TimerState[selector.selected])
+	display_manager.update_displays(donut_timer.current_hours, donut_timer.current_minutes, donut_timer.current_seconds)
