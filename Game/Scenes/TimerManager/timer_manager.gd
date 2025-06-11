@@ -7,6 +7,11 @@ extends Control
 @onready var start: Button = $Start
 
 
+func _ready() -> void:
+	
+	print(SaveLoad.SaveFileData.coins)
+
+
 func _on_donut_timer_time_updated(hours: Variant, minutes: Variant, seconds: Variant) -> void:
 	display_manager.update_displays(hours, minutes, seconds)
 	start_button_disable(selector.selected)
@@ -26,7 +31,6 @@ func _on_selector_selection_changed(selection) -> void:
 		start_button_disable(selection)
 
 
-
 func _on_start_pressed() -> void:
 	donut_timer.start_timer(donut_timer.TimerState[selector.selected])
 	display_manager.update_displays(donut_timer.current_hours, donut_timer.current_minutes, donut_timer.current_seconds)
@@ -35,6 +39,7 @@ func _on_start_pressed() -> void:
 func _on_stop_pressed() -> void:
 	donut_timer.stop_timer()
 	display_manager.update_displays(donut_timer.current_hours, donut_timer.current_minutes, donut_timer.current_seconds)
+
 
 func start_button_disable(selection):
 	if donut_timer.current_seconds > 0 or donut_timer.current_minutes > 0 or donut_timer.current_hours > 0:

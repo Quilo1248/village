@@ -40,6 +40,7 @@ func set_time(hours, minutes, seconds):
 	
 	update_displays()
 
+
 func _on_slider_pivot_time_just_set(hours: Variant, minutes: Variant, seconds: Variant) -> void:
 	current_hours = hours
 	current_minutes = minutes
@@ -58,7 +59,17 @@ func start_timer(mode : TimerState):
 
 
 func  stop_timer():
+	#stop
 	timer.stop()
+	#save
+	if current_state == TimerState.TIMER:
+		SaveLoad.SaveFileData.coins += total_minutes + (total_hours * 60)
+	if current_state == TimerState.STOPWATCH:
+		SaveLoad.SaveFileData.coins += current_minutes + (current_hours * 60)
+	
+	SaveLoad._save()
+	
+	#reset
 	current_state = TimerState.SET
 	current_hours = total_hours
 	current_minutes = total_minutes
