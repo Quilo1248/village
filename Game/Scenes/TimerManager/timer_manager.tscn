@@ -44,6 +44,7 @@ offset_right = 23.0
 offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
+disabled = true
 text = "Start"
 
 [node name="Stop" type="Button" parent="."]

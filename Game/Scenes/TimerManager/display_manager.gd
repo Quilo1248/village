@@ -14,6 +14,7 @@ enum TimerState {
 func update_displays(h, m, s):
 	donut_timer.update_displays()
 	time_display.update_display(h, m, s)
+
 	hide_displays(donut_timer.current_state)
 	
 
