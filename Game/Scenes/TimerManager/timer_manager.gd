@@ -37,7 +37,7 @@ func _on_start_pressed() -> void:
 
 
 func _on_stop_pressed() -> void:
-	donut_timer.stop_timer()
+	donut_timer.stop_timer(true)
 	display_manager.update_displays(donut_timer.current_hours, donut_timer.current_minutes, donut_timer.current_seconds)
 
 

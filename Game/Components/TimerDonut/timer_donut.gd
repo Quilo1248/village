@@ -58,15 +58,25 @@ func start_timer(mode : TimerState):
 	total_hours = current_hours
 
 
-func  stop_timer():
+func  stop_timer(interupted : bool):
 	#stop
 	timer.stop()
 	#save
-	if current_state == TimerState.TIMER:
-		SaveLoad.SaveFileData.coins += total_minutes + (total_hours * 60)
-	if current_state == TimerState.STOPWATCH:
-		SaveLoad.SaveFileData.coins += current_minutes + (current_hours * 60)
-	
+	if not interupted:
+		if current_state == TimerState.TIMER:
+			SaveLoad.SaveFileData.coins += total_minutes + (total_hours * 60)
+		if current_state == TimerState.STOPWATCH: #this technically is impossible!
+			SaveLoad.SaveFileData.coins += current_minutes + (current_hours * 60)
+	if interupted:
+		if current_state == TimerState.TIMER:
+			var start_time_seconds = total_hours * 3600 + total_minutes * 60 + total_seconds
+			var remaining_time_seconds = current_hours * 3600 + current_minutes * 60 + current_seconds
+			var elapsed_seconds = start_time_seconds - remaining_time_seconds
+			var earned_minutes = int(elapsed_seconds / 60)
+			
+			SaveLoad.SaveFileData.coins += earned_minutes
+		if current_state == TimerState.STOPWATCH:
+			SaveLoad.SaveFileData.coins += current_minutes + (current_hours * 60)
 	SaveLoad._save()
 	
 	#reset
@@ -89,7 +99,7 @@ func tick():
 		add_time(1)
 	
 	if check_timer_finished():
-			stop_timer()
+			stop_timer(false)
 			
 	
 	update_displays()
