@@ -66,14 +66,24 @@ func  stop_timer(interupted : bool):
 	#stop
 	timer.stop()
 	timer_active = false
+	
 	#save
+	var current_session_save = Session.new()
+	current_session_save.unix_start = unix_start
+	current_session_save.unix_end = Time.get_unix_time_from_system()
+	
 	if not interupted:
+		current_session_save.manual_stop = false
 		if current_state == TimerState.TIMER:
+			current_session_save.mode = "TIMER"
 			SaveLoad.SaveFileData.coins += total_minutes + (total_hours * 60)
 		if current_state == TimerState.STOPWATCH: #this technically is impossible!
 			SaveLoad.SaveFileData.coins += current_minutes + (current_hours * 60)
 	if interupted:
+		current_session_save.manual_stop = true
 		if current_state == TimerState.TIMER:
+			current_session_save.mode = "TIMER"
+			
 			var start_time_seconds = total_hours * 3600 + total_minutes * 60 + total_seconds
 			var remaining_time_seconds = current_hours * 3600 + current_minutes * 60 + current_seconds
 			var elapsed_seconds = start_time_seconds - remaining_time_seconds
@@ -81,7 +91,10 @@ func  stop_timer(interupted : bool):
 			
 			SaveLoad.SaveFileData.coins += earned_minutes
 		if current_state == TimerState.STOPWATCH:
+			current_session_save.mode = "STOPWATCH"
 			SaveLoad.SaveFileData.coins += current_minutes + (current_hours * 60)
+	
+	SaveLoad.SaveFileData.sessions.append(current_session_save)
 	SaveLoad._save()
 	
 	#reset
