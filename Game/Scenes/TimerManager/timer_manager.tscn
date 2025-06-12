@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://du2drau3cs3g4"]
+[gd_scene load_steps=7 format=3 uid="uid://du2drau3cs3g4"]
 
 [ext_resource type="PackedScene" uid="uid://17pt8tvyj7xm" path="res://Game/Components/Selector/selector.tscn" id="1_dqmun"]
 [ext_resource type="PackedScene" uid="uid://bld2jflf04ny1" path="res://Game/Components/TimerDonut/timer_donut.tscn" id="1_gogte"]
 [ext_resource type="Script" uid="uid://b6auyw7jc4600" path="res://Game/Scenes/TimerManager/timer_manager.gd" id="1_qbsx1"]
 [ext_resource type="PackedScene" uid="uid://byw78cmtuqewe" path="res://Game/Components/TimeDisplay/time_display.tscn" id="2_dqmun"]
+[ext_resource type="PackedScene" uid="uid://5wehn0kwrrjw" path="res://Game/Components/CoinsDisplay/coins_display.tscn" id="2_mg0fu"]
 [ext_resource type="Script" uid="uid://bn8oybd87v7o5" path="res://Game/Scenes/TimerManager/display_manager.gd" id="5_mg0fu"]
 
 [node name="TimerManager" type="Control"]
@@ -14,6 +15,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qbsx1")
+
+[node name="CoinsDisplay" parent="." instance=ExtResource("2_mg0fu")]
+layout_mode = 1
+offset_top = 12.195
+offset_bottom = 43.195
 
 [node name="Selector" parent="." instance=ExtResource("1_dqmun")]
 layout_mode = 1

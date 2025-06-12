@@ -10,10 +10,12 @@ enum TimerState {
 @onready var selector: Control = $"../Selector"
 @onready var start: Button = $"../Start"
 @onready var stop: Button = $"../Stop"
+@onready var coins_display: Label = $"../CoinsDisplay"
 
 func update_displays(h, m, s):
 	donut_timer.update_displays()
 	time_display.update_display(h, m, s)
+	coins_display.update_display()
 
 	hide_displays(donut_timer.current_state)
 	

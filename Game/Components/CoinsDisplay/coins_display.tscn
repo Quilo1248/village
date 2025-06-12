@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://5wehn0kwrrjw"]
+
+[ext_resource type="Script" uid="uid://bcy51nlm5v17f" path="res://Game/Components/CoinsDisplay/coins_display.gd" id="1_klhj1"]
+
+[node name="CoinsDisplay" type="Label"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 14.37
+offset_bottom = 37.37
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.709804, 0.462745, 0.0784314, 1)
+theme_override_font_sizes/font_size = 22
+text = "6 Coins"
+horizontal_alignment = 1
+script = ExtResource("1_klhj1")

@@ -8,8 +8,7 @@ extends Control
 
 
 func _ready() -> void:
-	
-	print(SaveLoad.SaveFileData.coins)
+	pass
 
 
 func _on_donut_timer_time_updated(hours: Variant, minutes: Variant, seconds: Variant) -> void:

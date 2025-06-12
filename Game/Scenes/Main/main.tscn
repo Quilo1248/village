@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dr7upd8t7jnlm"]
+[gd_scene load_steps=2 format=3 uid="uid://dr7upd8t7jnlm"]
+
+[ext_resource type="PackedScene" uid="uid://du2drau3cs3g4" path="res://Game/Scenes/TimerManager/timer_manager.tscn" id="1_ho74t"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -7,3 +9,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TimerManager" parent="." instance=ExtResource("1_ho74t")]
+layout_mode = 1
