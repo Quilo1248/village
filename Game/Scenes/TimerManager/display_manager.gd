@@ -17,11 +17,11 @@ func update_displays(h, m, s):
 	time_display.update_display(h, m, s)
 	coins_display.update_display()
 
-	hide_displays(donut_timer.current_state)
+	hide_displays()
 	
 
-func hide_displays(state : TimerState):
-	if state == TimerState.SET:
+func hide_displays():
+	if not donut_timer.timer_active:
 		selector.show()
 		time_display.show()
 		donut_timer.show()

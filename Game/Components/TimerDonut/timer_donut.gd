@@ -12,12 +12,14 @@ enum TimerState {
 	STOPWATCH,
 }
 var current_state = TimerState.SET
+var timer_active := false
 var total_seconds : int = 0
 var total_minutes : int = 0
 var total_hours : int = 0
 var current_seconds : int = 0
 var current_minutes : int = 0
 var current_hours : int = 0
+var unix_start : float
 @onready var display_manager: Node = $DisplayManager
 @onready var color_manager: Node = $DisplayManager/ColorManager
 @onready var timer: Timer = $Timer
@@ -51,16 +53,19 @@ func _on_slider_pivot_time_just_set(hours: Variant, minutes: Variant, seconds: V
 
 func start_timer(mode : TimerState):
 	timer.start()
+	timer_active = true
 	current_state = mode
 	
 	total_seconds = current_seconds
 	total_minutes = current_minutes
 	total_hours = current_hours
+	unix_start = Time.get_unix_time_from_system()
 
 
 func  stop_timer(interupted : bool):
 	#stop
 	timer.stop()
+	timer_active = false
 	#save
 	if not interupted:
 		if current_state == TimerState.TIMER:
@@ -80,7 +85,10 @@ func  stop_timer(interupted : bool):
 	SaveLoad._save()
 	
 	#reset
-	current_state = TimerState.SET
+	if current_state == TimerState.STOPWATCH:
+		current_state = TimerState.STOPWATCH
+	else:
+		current_state = TimerState.SET
 	current_hours = total_hours
 	current_minutes = total_minutes
 	current_seconds = total_seconds
@@ -91,14 +99,24 @@ func _on_timer_timeout() -> void:
 
 
 func tick():
+	var unix_now = Time.get_unix_time_from_system()
+	
+	var ct = time_between(unix_start, unix_now) # ct for current time
+	var total_time_in_seconds = (total_hours * 3600) + (total_minutes * 60) + total_seconds
+	var rt = total_time_in_seconds - ct.total_seconds
+	
 	if current_state == TimerState.TIMER:
-		add_time(-1)
+		current_seconds = int(rt % 60)
+		current_minutes = int((rt % 3600) / 60)
+		current_hours = int (rt / 3600)
 		
 	
 	if current_state == TimerState.STOPWATCH:
-		add_time(1)
+		current_seconds = ct.seconds
+		current_minutes = ct.minutes
+		current_hours = ct.hours
 	
-	if check_timer_finished():
+	if current_state == TimerState.TIMER and rt < 0:
 			stop_timer(false)
 			
 	
@@ -106,30 +124,11 @@ func tick():
 	emit_signal("time_updated", current_hours, current_minutes, current_seconds)
 
 
-func add_time(seconds):
-	current_seconds += seconds
-	if current_seconds > 59:
-		current_minutes += 1
-		current_seconds = 0
-	if current_seconds < 0:
-		current_seconds = 59
-		current_minutes -= 1
-	
-	if current_minutes > 59:
-		current_hours += 1
-		current_minutes = 0
-	if current_minutes < 0:
-		current_hours -= 1
-		current_minutes = 59
-
-
-func check_timer_finished():
-	if current_hours < 0 \
-	and current_state == TimerState.TIMER:
-		return true
-	
-	if current_hours >= color_manager.colors.size() \
-	and current_state == TimerState.STOPWATCH:
-		return true
-	
-	return false
+func time_between(start_unix: int, end_unix: int) -> Dictionary:
+	var duration = abs(end_unix - start_unix)
+	return {
+	"total_seconds": int(duration),
+	"seconds": int(duration) % 60,
+	"minutes": int(duration / 60) % 60,
+	"hours": int(duration / 3600)
+}
