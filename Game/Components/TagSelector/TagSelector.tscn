@@ -1,0 +1,115 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmw836ixly7gq"]
+
+[ext_resource type="PackedScene" uid="uid://h6qw0r3uhmco" path="res://Game/Components/Tag/tag.tscn" id="1_tx051"]
+
+[node name="TagSelector" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Favorites" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Favorites"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Tag" parent="Panel/VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag2" parent="Panel/VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag3" parent="Panel/VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag4" parent="Panel/VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag5" parent="Panel/VBoxContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10.06)
+layout_mode = 2
+
+[node name="All Tags" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "All Tags"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Panel/VBoxContainer/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+last_wrap_alignment = 1
+
+[node name="Tag6" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag7" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag8" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag9" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag10" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag11" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag12" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag13" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag14" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag15" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag16" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag17" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
+
+[node name="Tag18" parent="Panel/VBoxContainer/ScrollContainer2/HFlowContainer" instance=ExtResource("1_tx051")]
+layout_mode = 2
