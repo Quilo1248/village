@@ -1,8 +1,15 @@
-[gd_scene format=3 uid="uid://h6qw0r3uhmco"]
+[gd_scene load_steps=2 format=3 uid="uid://h6qw0r3uhmco"]
+
+[ext_resource type="Script" uid="uid://dvugmmllxv2li" path="res://Game/Components/Tag/tag.gd" id="1_okrfv"]
 
 [node name="Tag" type="Button"]
 custom_minimum_size = Vector2(80, 80)
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_horizontal = 3
+toggle_mode = true
 text = "Tag"
+script = ExtResource("1_okrfv")
+title = "Tag"
+description = "Tag Description"
+background_color = Color(0.596078, 0.592157, 0.101961, 1)
