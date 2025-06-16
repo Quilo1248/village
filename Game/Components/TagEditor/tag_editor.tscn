@@ -1,0 +1,131 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyvf5sm2s4is3"]
+
+[ext_resource type="Theme" uid="uid://bshfj8h4tboh4" path="res://Game/Resources/Theme/MainTheme.tres" id="1_dlme5"]
+[ext_resource type="PackedScene" uid="uid://h6qw0r3uhmco" path="res://Game/Components/Tag/tag.tscn" id="1_jikt7"]
+
+[node name="TagEditor" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 400)
+anchors_preset = -1
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.8
+offset_left = 8.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme = ExtResource("1_dlme5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_dlme5")
+theme_override_constants/separation = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_dlme5")
+theme_override_constants/separation = 16
+
+[node name="Tag" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_jikt7")]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BackgroundColor" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Background" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/BackgroundColor"]
+layout_mode = 2
+text = "Background"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/BackgroundColor"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("1_dlme5")
+theme_override_font_sizes/font_size = 16
+edit_alpha = false
+
+[node name="QuickHex" type="ColorPicker" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/BackgroundColor"]
+layout_mode = 2
+size_flags_horizontal = 0
+edit_alpha = false
+color_mode = 1
+picker_shape = 4
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+presets_visible = false
+
+[node name="TextColor" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Text" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TextColor"]
+layout_mode = 2
+text = "Text"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TextColor"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("1_dlme5")
+theme_override_font_sizes/font_size = 16
+edit_alpha = false
+
+[node name="QuickHex" type="ColorPicker" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TextColor"]
+layout_mode = 2
+size_flags_horizontal = 0
+edit_alpha = false
+color_mode = 1
+picker_shape = 4
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+presets_visible = false
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_dlme5")
+placeholder_text = "Name"
+
+[node name="TextEdit" type="TextEdit" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 67.555)
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_dlme5")
+placeholder_text = "Description"
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 2
+
+[node name="Cancel" type="Button" parent="Panel/VBoxContainer/Buttons"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="Save" type="Button" parent="Panel/VBoxContainer/Buttons"]
+layout_mode = 2
+text = "Save
+"
