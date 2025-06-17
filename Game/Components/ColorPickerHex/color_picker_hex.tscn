@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyo503p60ci0r"]
+
+[ext_resource type="Theme" uid="uid://bshfj8h4tboh4" path="res://Game/Resources/Theme/MainTheme.tres" id="1_lpvue"]
+[ext_resource type="Script" uid="uid://cdope66v7c6pj" path="res://Game/Components/ColorPickerHex/color_picker_hex.gd" id="1_nkfga"]
+
+[node name="ColorPickerHex" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_nkfga")
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("1_lpvue")
+theme_override_font_sizes/font_size = 16
+edit_alpha = false
+
+[node name="QuickHex" type="ColorPicker" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+edit_alpha = false
+color_mode = 1
+picker_shape = 4
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+presets_visible = false
+
+[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="color_changed" from="QuickHex" to="." method="_on_quick_hex_color_changed"]

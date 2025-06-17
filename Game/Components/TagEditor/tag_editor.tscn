@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyvf5sm2s4is3"]
+[gd_scene load_steps=4 format=3 uid="uid://dyvf5sm2s4is3"]
 
 [ext_resource type="Theme" uid="uid://bshfj8h4tboh4" path="res://Game/Resources/Theme/MainTheme.tres" id="1_dlme5"]
 [ext_resource type="PackedScene" uid="uid://h6qw0r3uhmco" path="res://Game/Components/Tag/tag.tscn" id="1_jikt7"]
+[ext_resource type="PackedScene" uid="uid://cyo503p60ci0r" path="res://Game/Components/ColorPickerHex/color_picker_hex.tscn" id="3_c3pkw"]
 
 [node name="TagEditor" type="CanvasLayer"]
 
@@ -54,24 +55,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 text = "Background"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/BackgroundColor"]
-custom_minimum_size = Vector2(0, 40)
+[node name="ColorPickerHex" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/BackgroundColor" instance=ExtResource("3_c3pkw")]
 layout_mode = 2
-theme = ExtResource("1_dlme5")
-theme_override_font_sizes/font_size = 16
-edit_alpha = false
-
-[node name="QuickHex" type="ColorPicker" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/BackgroundColor"]
-layout_mode = 2
-size_flags_horizontal = 0
-edit_alpha = false
-color_mode = 1
-picker_shape = 4
-can_add_swatches = false
-sampler_visible = false
-color_modes_visible = false
-sliders_visible = false
-presets_visible = false
 
 [node name="TextColor" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -81,24 +66,8 @@ theme_override_constants/separation = 0
 layout_mode = 2
 text = "Text"
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TextColor"]
-custom_minimum_size = Vector2(0, 40)
+[node name="ColorPickerHex" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TextColor" instance=ExtResource("3_c3pkw")]
 layout_mode = 2
-theme = ExtResource("1_dlme5")
-theme_override_font_sizes/font_size = 16
-edit_alpha = false
-
-[node name="QuickHex" type="ColorPicker" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TextColor"]
-layout_mode = 2
-size_flags_horizontal = 0
-edit_alpha = false
-color_mode = 1
-picker_shape = 4
-can_add_swatches = false
-sampler_visible = false
-color_modes_visible = false
-sliders_visible = false
-presets_visible = false
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
