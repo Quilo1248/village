@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyvf5sm2s4is3"]
+[gd_scene load_steps=5 format=3 uid="uid://dyvf5sm2s4is3"]
 
 [ext_resource type="Theme" uid="uid://bshfj8h4tboh4" path="res://Game/Resources/Theme/MainTheme.tres" id="1_dlme5"]
 [ext_resource type="PackedScene" uid="uid://h6qw0r3uhmco" path="res://Game/Components/Tag/tag.tscn" id="1_jikt7"]
+[ext_resource type="Script" uid="uid://yw6w6wo8d6on" path="res://Game/Components/TagEditor/tag_color_manager.gd" id="2_trxiv"]
 [ext_resource type="PackedScene" uid="uid://cyo503p60ci0r" path="res://Game/Components/ColorPickerHex/color_picker_hex.tscn" id="3_c3pkw"]
 
 [node name="TagEditor" type="CanvasLayer"]
@@ -37,48 +38,52 @@ size_flags_vertical = 3
 theme = ExtResource("1_dlme5")
 theme_override_constants/separation = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="TagColorManager" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_dlme5")
 theme_override_constants/separation = 16
+script = ExtResource("2_trxiv")
 
-[node name="Tag" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_jikt7")]
+[node name="Tag" parent="Panel/VBoxContainer/HBoxContainer/TagColorManager" instance=ExtResource("1_jikt7")]
 layout_mode = 2
 size_flags_vertical = 4
+background_color = Color(0, 0, 0, 1)
+text_color = Color(1, 1, 1, 1)
 
-[node name="BackgroundColor" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="BackgroundColor" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/TagColorManager"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Background" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/BackgroundColor"]
+[node name="Background" type="Label" parent="Panel/VBoxContainer/HBoxContainer/TagColorManager/BackgroundColor"]
 layout_mode = 2
 text = "Background"
 
-[node name="ColorPickerHex" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/BackgroundColor" instance=ExtResource("3_c3pkw")]
+[node name="BackgroundColorPickerHex" parent="Panel/VBoxContainer/HBoxContainer/TagColorManager/BackgroundColor" instance=ExtResource("3_c3pkw")]
 layout_mode = 2
 
-[node name="TextColor" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="TextColor" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer/TagColorManager"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Text" type="Label" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TextColor"]
+[node name="Text" type="Label" parent="Panel/VBoxContainer/HBoxContainer/TagColorManager/TextColor"]
 layout_mode = 2
 text = "Text"
 
-[node name="ColorPickerHex" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer/TextColor" instance=ExtResource("3_c3pkw")]
+[node name="TextColorPickerHex" parent="Panel/VBoxContainer/HBoxContainer/TagColorManager/TextColor" instance=ExtResource("3_c3pkw")]
 layout_mode = 2
+default_color = Color(1, 1, 1, 1)
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="TagTitlesManager" type="VBoxContainer" parent="Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Title" type="LineEdit" parent="Panel/VBoxContainer/HBoxContainer/TagTitlesManager"]
 layout_mode = 2
 theme = ExtResource("1_dlme5")
 placeholder_text = "Name"
 
-[node name="TextEdit" type="TextEdit" parent="Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="Description" type="TextEdit" parent="Panel/VBoxContainer/HBoxContainer/TagTitlesManager"]
 custom_minimum_size = Vector2(0, 67.555)
 layout_mode = 2
 size_flags_vertical = 3
@@ -98,3 +103,6 @@ text = "Cancel"
 layout_mode = 2
 text = "Save
 "
+
+[connection signal="color_changed" from="Panel/VBoxContainer/HBoxContainer/TagColorManager/BackgroundColor/BackgroundColorPickerHex" to="Panel/VBoxContainer/HBoxContainer/TagColorManager" method="_on_background_color_picker_hex_color_changed"]
+[connection signal="color_changed" from="Panel/VBoxContainer/HBoxContainer/TagColorManager/TextColor/TextColorPickerHex" to="Panel/VBoxContainer/HBoxContainer/TagColorManager" method="_on_text_color_picker_hex_color_changed"]
