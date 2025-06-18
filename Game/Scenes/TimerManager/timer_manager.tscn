@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://du2drau3cs3g4"]
+[gd_scene load_steps=9 format=3 uid="uid://du2drau3cs3g4"]
 
 [ext_resource type="PackedScene" uid="uid://17pt8tvyj7xm" path="res://Game/Components/Selector/selector.tscn" id="1_dqmun"]
 [ext_resource type="PackedScene" uid="uid://bld2jflf04ny1" path="res://Game/Components/TimerDonut/timer_donut.tscn" id="1_gogte"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://byw78cmtuqewe" path="res://Game/Components/TimeDisplay/time_display.tscn" id="2_dqmun"]
 [ext_resource type="PackedScene" uid="uid://5wehn0kwrrjw" path="res://Game/Components/CoinsDisplay/coins_display.tscn" id="2_mg0fu"]
 [ext_resource type="Script" uid="uid://bn8oybd87v7o5" path="res://Game/Scenes/TimerManager/display_manager.gd" id="5_mg0fu"]
+[ext_resource type="PackedScene" uid="uid://cmw836ixly7gq" path="res://Game/Components/TagSelector/TagSelector.tscn" id="7_i5xu4"]
+[ext_resource type="PackedScene" uid="uid://c84qd0mfh8pnh" path="res://Game/Components/TagButton/TagPopupPrompt.tscn" id="7_wccyj"]
 
 [node name="TimerManager" type="Control"]
 layout_mode = 3
@@ -36,6 +38,14 @@ text = "h:mm:ss"
 
 [node name="DisplayManager" type="Node" parent="."]
 script = ExtResource("5_mg0fu")
+
+[node name="TagSelector" parent="." instance=ExtResource("7_i5xu4")]
+visible = false
+
+[node name="TagPopupPrompt" parent="." instance=ExtResource("7_wccyj")]
+layout_mode = 1
+offset_top = 137.0
+offset_bottom = 168.0
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 1
@@ -71,5 +81,6 @@ text = "Stop"
 
 [connection signal="selection_changed" from="Selector" to="." method="_on_selector_selection_changed"]
 [connection signal="time_updated" from="DonutTimer" to="." method="_on_donut_timer_time_updated"]
+[connection signal="pressed" from="TagPopupPrompt" to="TagSelector" method="popup"]
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Stop" to="." method="_on_stop_pressed"]

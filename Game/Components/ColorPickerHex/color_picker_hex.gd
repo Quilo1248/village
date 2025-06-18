@@ -9,9 +9,8 @@ var current_color := Color.BLACK
 
 
 func _ready() -> void:
-	current_color = default_color
-	quick_hex.color = default_color
-	color_picker_button.color = default_color
+	reset()
+
 
 func _on_color_picker_button_color_changed(color: Color) -> void:
 	if quick_hex.color != color:
@@ -23,3 +22,9 @@ func _on_quick_hex_color_changed(color: Color) -> void:
 	if color_picker_button.color != color:
 		color_picker_button.color = color
 		emit_signal("color_changed", color)
+
+
+func reset():
+	current_color = default_color
+	quick_hex.color = default_color
+	color_picker_button.color = default_color

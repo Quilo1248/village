@@ -1,4 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmw836ixly7gq"]
+[gd_scene load_steps=7 format=3 uid="uid://cmw836ixly7gq"]
+
+[ext_resource type="Script" uid="uid://d26vqgptlb2np" path="res://Game/Components/TagSelector/tag_selector.gd" id="1_tx051"]
+[ext_resource type="PackedScene" uid="uid://b4u08nnir2nwa" path="res://Game/Components/TagCreator/tag_creator.tscn" id="2_fuwcd"]
+[ext_resource type="PackedScene" uid="uid://dyvf5sm2s4is3" path="res://Game/Components/TagEditor/tag_editor.tscn" id="2_q2sy5"]
+[ext_resource type="Script" uid="uid://ba1383mfm0k2r" path="res://Game/Components/TagCreator/tag_creator.gd" id="4_dj87t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3mhmh"]
 bg_color = Color(0.976471, 0.960784, 0.843137, 1)
@@ -8,6 +13,7 @@ color = Color(0.486275, 0.435294, 0.392157, 1)
 thickness = 3
 
 [node name="TagSelector" type="CanvasLayer"]
+script = ExtResource("1_tx051")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -28,6 +34,13 @@ offset_right = -16.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="X" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "X"
 
 [node name="Favorites" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -58,6 +71,9 @@ text = "All Tags"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TagEditor" parent="Panel/VBoxContainer" instance=ExtResource("2_q2sy5")]
+visible = false
+
 [node name="ScrollTags" type="ScrollContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -68,3 +84,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 2
 last_wrap_alignment = 1
+
+[node name="TagCreator" parent="Panel/VBoxContainer/ScrollTags/TagsContainer" node_paths=PackedStringArray("TagEditor") instance=ExtResource("2_fuwcd")]
+custom_minimum_size = Vector2(58, 58)
+layout_mode = 2
+script = ExtResource("4_dj87t")
+TagEditor = NodePath("../../../TagEditor")
+
+[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/X" to="." method="_on_x_pressed"]
+[connection signal="selected" from="Panel/VBoxContainer/TagEditor" to="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" method="_on_tag_editor_selected"]
+[connection signal="pressed" from="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" to="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" method="_on_pressed"]
