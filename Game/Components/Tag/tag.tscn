@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dvugmmllxv2li" path="res://Game/Components/Tag/tag.gd" id="1_okrfv"]
 [ext_resource type="Theme" uid="uid://bshfj8h4tboh4" path="res://Game/Resources/Theme/MainTheme.tres" id="1_wq2bs"]
 
-[node name="Tag" type="Button"]
+[node name="Tag" type="Button" groups=["tag"]]
 custom_minimum_size = Vector2(80, 80)
 offset_right = 8.0
 offset_bottom = 8.0

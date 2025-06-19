@@ -93,4 +93,5 @@ TagEditor = NodePath("../../../TagEditor")
 
 [connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/X" to="." method="_on_x_pressed"]
 [connection signal="selected" from="Panel/VBoxContainer/TagEditor" to="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" method="_on_tag_editor_selected"]
+[connection signal="tag_created" from="Panel/VBoxContainer/TagEditor" to="." method="_on_tag_editor_tag_created"]
 [connection signal="pressed" from="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" to="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" method="_on_pressed"]
