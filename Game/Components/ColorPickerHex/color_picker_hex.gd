@@ -15,12 +15,14 @@ func _ready() -> void:
 func _on_color_picker_button_color_changed(color: Color) -> void:
 	if quick_hex.color != color:
 		quick_hex.color = color
+		current_color = color
 		emit_signal("color_changed", color)
 
 
 func _on_quick_hex_color_changed(color: Color) -> void:
 	if color_picker_button.color != color:
 		color_picker_button.color = color
+		current_color = color
 		emit_signal("color_changed", color)
 
 
