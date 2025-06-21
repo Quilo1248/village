@@ -5,6 +5,7 @@ const TAG = preload("res://Game/Components/Tag/tag.tscn")
 var selected_tags : Array[Tag]
 @onready var tags_container: HFlowContainer = $Panel/VBoxContainer/ScrollTags/TagsContainer
 @onready var selected_tags_display: VBoxContainer = $"../SelectedTagsDisplay"
+@onready var donut_timer: AspectRatioContainer = $"../DonutTimer"
 
 
 func popup():
@@ -15,6 +16,7 @@ func popup():
 func _on_x_pressed() -> void:
 	selected_tags_display.selected_tags = selected_tags
 	selected_tags_display.update_displays()
+	donut_timer.tags = selected_tags
 	hide()
 
 

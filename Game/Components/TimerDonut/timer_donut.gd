@@ -20,6 +20,7 @@ var current_seconds : int = 0
 var current_minutes : int = 0
 var current_hours : int = 0
 var unix_start : float
+var tags : Array[Tag]
 @onready var display_manager: Node = $DisplayManager
 @onready var color_manager: Node = $DisplayManager/ColorManager
 @onready var timer: Timer = $Timer
@@ -71,6 +72,7 @@ func  stop_timer(interupted : bool):
 	var current_session_save = Session.new()
 	current_session_save.unix_start = unix_start
 	current_session_save.unix_end = Time.get_unix_time_from_system()
+	current_session_save.tags = tags
 	
 	if not interupted:
 		current_session_save.manual_stop = false
