@@ -15,3 +15,5 @@ script = ExtResource("1_okrfv")
 title = "Tag"
 description = "Tag Description"
 background_color = Color(0.596078, 0.592157, 0.101961, 1)
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

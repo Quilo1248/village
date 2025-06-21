@@ -1,10 +1,11 @@
 extends Button
 
-
+signal toggled_tag(bool, int, String)
 @export var title : String
 @export var description : String
 @export var background_color : Color
 @export var text_color : Color
+@export var index : int
 
 
 func _ready():
@@ -43,3 +44,7 @@ func _set_state_color(state: String, bg_color: Color, border_color = null, borde
 			sb.border_width = border_width
 		# Apply override on this button for the given state
 		add_theme_stylebox_override(state, sb)
+
+
+func _on_toggled(toggled_on: bool) -> void:
+	emit_signal("toggled_tag", toggled_on, index, title)
