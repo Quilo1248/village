@@ -1,19 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm3sivb87shih"]
+[gd_scene load_steps=2 format=3 uid="uid://cm3sivb87shih"]
 
 [ext_resource type="Script" uid="uid://j0s8s4yly1ku" path="res://Game/Components/SelectedTagsDisplay/selected_tags_display.gd" id="1_l174c"]
-[ext_resource type="PackedScene" uid="uid://nhkexyh6o35c" path="res://Game/Components/SelectedTagsDisplay/selected_tag_display.tscn" id="2_kwcie"]
 
 [node name="SelectedTagsDisplay" type="VBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 0
 script = ExtResource("1_l174c")
-
-[node name="SelectedTagDisplay1" parent="." instance=ExtResource("2_kwcie")]
-layout_mode = 2
-
-[node name="SelectedTagDisplay2" parent="." instance=ExtResource("2_kwcie")]
-layout_mode = 2
-
-[node name="SelectedTagDisplay3" parent="." instance=ExtResource("2_kwcie")]
-layout_mode = 2

@@ -1,8 +1,10 @@
 extends CanvasLayer
 
+signal closed
 const TAG = preload("res://Game/Components/Tag/tag.tscn")
 var selected_tags : Array[Tag]
 @onready var tags_container: HFlowContainer = $Panel/VBoxContainer/ScrollTags/TagsContainer
+@onready var selected_tags_display: VBoxContainer = $"../SelectedTagsDisplay"
 
 
 func popup():
@@ -11,6 +13,8 @@ func popup():
 
 
 func _on_x_pressed() -> void:
+	selected_tags_display.selected_tags = selected_tags
+	selected_tags_display.update_displays()
 	hide()
 
 
@@ -26,6 +30,8 @@ func refresh():
 		var tag = TAG.instantiate()
 		tag.index = i
 		tag.tag = tags[i]
+		if tags[i] in selected_tags:
+			tag.button_pressed = true
 		
 		tag.toggled_tag.connect(button_child_toggled)
 		tags_container.add_child(tag)
@@ -42,4 +48,3 @@ func button_child_toggled(toggled : bool, tag : Tag):
 	else:
 		selected_tags.erase(tag)
 	
-	print(selected_tags)
