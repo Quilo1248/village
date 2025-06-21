@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c84qd0mfh8pnh"]
+[gd_scene load_steps=2 format=3 uid="uid://c84qd0mfh8pnh"]
+
+[ext_resource type="Theme" uid="uid://bshfj8h4tboh4" path="res://Game/Resources/Theme/MainTheme.tres" id="1_f475t"]
 
 [node name="TagPopupPrompt" type="Button"]
 anchors_preset = 8
@@ -14,4 +16,5 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_f475t")
 text = "Tags"

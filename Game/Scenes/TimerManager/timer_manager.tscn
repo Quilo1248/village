@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://du2drau3cs3g4"]
+[gd_scene load_steps=10 format=3 uid="uid://du2drau3cs3g4"]
 
 [ext_resource type="PackedScene" uid="uid://17pt8tvyj7xm" path="res://Game/Components/Selector/selector.tscn" id="1_dqmun"]
 [ext_resource type="PackedScene" uid="uid://bld2jflf04ny1" path="res://Game/Components/TimerDonut/timer_donut.tscn" id="1_gogte"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bn8oybd87v7o5" path="res://Game/Scenes/TimerManager/display_manager.gd" id="5_mg0fu"]
 [ext_resource type="PackedScene" uid="uid://cmw836ixly7gq" path="res://Game/Components/TagSelector/TagSelector.tscn" id="7_i5xu4"]
 [ext_resource type="PackedScene" uid="uid://c84qd0mfh8pnh" path="res://Game/Components/TagButton/TagPopupPrompt.tscn" id="7_wccyj"]
+[ext_resource type="Theme" uid="uid://bshfj8h4tboh4" path="res://Game/Resources/Theme/MainTheme.tres" id="9_4vab2"]
 
 [node name="TimerManager" type="Control"]
 layout_mode = 3
@@ -60,6 +61,7 @@ offset_right = 23.0
 offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("9_4vab2")
 disabled = true
 text = "Start"
 
@@ -77,6 +79,7 @@ offset_right = 23.0
 offset_bottom = 224.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("9_4vab2")
 text = "Stop"
 
 [connection signal="selection_changed" from="Selector" to="." method="_on_selector_selection_changed"]
