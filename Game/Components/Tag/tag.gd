@@ -1,33 +1,29 @@
 extends Button
 
 signal toggled_tag(bool, int, String)
-@export var title : String
-@export var description : String
-@export var background_color : Color
-@export var text_color : Color
 @export var index : int
-
+@export var tag : Tag
 
 func _ready():
 	update_tag()
 
 
 func update_tag():
-	text = title
-	tooltip_text = description
+	text = tag.title
+	tooltip_text = tag.description
 	# Colors
-	_set_state_color("normal", background_color)
-	_set_state_color("hover", background_color.lightened(0.1))
-	_set_state_color("pressed", background_color.darkened(0.15))
-	_set_state_color("focus", background_color.lightened(0.1))
-	_set_state_color("disabled", background_color.darkened(0.2))
+	_set_state_color("normal", tag.background_color)
+	_set_state_color("hover", tag.background_color.lightened(0.1))
+	_set_state_color("pressed", tag.background_color.darkened(0.15))
+	_set_state_color("focus", tag.background_color.lightened(0.1))
+	_set_state_color("disabled", tag.background_color.darkened(0.2))
 	
-	add_theme_color_override("font_color", text_color)
-	add_theme_color_override("font_hover_color", text_color.lightened(0.1))
-	add_theme_color_override("font_pressed_color", text_color.darkened(0.15))
-	add_theme_color_override("font_hover_pressed_color", text_color)
-	add_theme_color_override("font_focus_color", text_color.lightened(0.1))
-	add_theme_color_override("font_disabled_color", text_color.darkened(0.2))
+	add_theme_color_override("font_color", tag.text_color)
+	add_theme_color_override("font_hover_color", tag.text_color.lightened(0.1))
+	add_theme_color_override("font_pressed_color", tag.text_color.darkened(0.15))
+	add_theme_color_override("font_hover_pressed_color", tag.text_color)
+	add_theme_color_override("font_focus_color", tag.text_color.lightened(0.1))
+	add_theme_color_override("font_disabled_color", tag.text_color.darkened(0.2))
 
 
 func _set_state_color(state: String, bg_color: Color, border_color = null, border_width: float = 0.0) -> void:
@@ -47,4 +43,4 @@ func _set_state_color(state: String, bg_color: Color, border_color = null, borde
 
 
 func _on_toggled(toggled_on: bool) -> void:
-	emit_signal("toggled_tag", toggled_on, index, title)
+	emit_signal("toggled_tag", toggled_on, tag)
