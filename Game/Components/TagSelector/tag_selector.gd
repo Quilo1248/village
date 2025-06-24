@@ -50,3 +50,47 @@ func button_child_toggled(toggled : bool, tag : Tag):
 	else:
 		selected_tags.erase(tag)
 	
+
+
+func _on_trash_pressed() -> void:
+	var t = get_used_and_unused_tags()
+	
+	if all_in(selected_tags, t.unused):
+		print("pass")
+	else: print("nuh uh")
+
+
+func get_used_and_unused_tags() -> Dictionary:
+	SaveLoad._load()
+	var all_tags: Array[Tag] = SaveLoad.SaveFileData.tags
+	var all_sessions: Array[Session] = SaveLoad.SaveFileData.sessions
+	
+	var used_tags := {} # Dictionary as a set this allows us to get constant time
+	
+	for session in all_sessions:
+		for tag in session.tags:
+			used_tags[tag] = true
+	
+	var used := []
+	var unused := []
+	
+	for tag in all_tags:
+		if used_tags.has(tag):
+			used.append(tag)
+		else:
+			unused.append(tag)
+	
+	return {
+		"used": used,
+		"unused": unused
+	}
+
+
+func all_in(listA: Array, listB: Array) -> bool:
+	var dictB = {}
+	for item in listB:
+		dictB[item] = true
+	for item in listA:
+		if not dictB.has(item):
+			return false
+	return true

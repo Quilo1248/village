@@ -35,12 +35,29 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+[node name="ActionsBar" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="X" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="X" type="Button" parent="Panel/VBoxContainer/ActionsBar"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "X"
+
+[node name="spacer" type="Control" parent="Panel/VBoxContainer/ActionsBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Favorite" type="Button" parent="Panel/VBoxContainer/ActionsBar"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "♥"
+
+[node name="Trash" type="Button" parent="Panel/VBoxContainer/ActionsBar"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "🗑"
 
 [node name="Favorites" type="Label" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -91,7 +108,14 @@ layout_mode = 2
 script = ExtResource("4_dj87t")
 TagEditor = NodePath("../../../TagEditor")
 
-[connection signal="pressed" from="Panel/VBoxContainer/HBoxContainer/X" to="." method="_on_x_pressed"]
+[node name="ConfirmDeleteDialog" type="ConfirmationDialog" parent="."]
+ok_button_text = "OBLITIRATE!"
+dialog_text = "you are about to DELETE the selected tag(s) PERMANANTLY"
+dialog_autowrap = true
+cancel_button_text = "Nevermind"
+
+[connection signal="pressed" from="Panel/VBoxContainer/ActionsBar/X" to="." method="_on_x_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ActionsBar/Trash" to="." method="_on_trash_pressed"]
 [connection signal="selected" from="Panel/VBoxContainer/TagEditor" to="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" method="_on_tag_editor_selected"]
 [connection signal="tag_created" from="Panel/VBoxContainer/TagEditor" to="." method="_on_tag_editor_tag_created"]
 [connection signal="pressed" from="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" to="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" method="_on_pressed"]
