@@ -6,6 +6,7 @@ var selected_tags : Array[Tag]
 @onready var tags_container: HFlowContainer = $Panel/VBoxContainer/ScrollTags/TagsContainer
 @onready var selected_tags_display: VBoxContainer = $"../SelectedTagsDisplay"
 @onready var donut_timer: AspectRatioContainer = $"../DonutTimer"
+@onready var edit: Button = $Panel/VBoxContainer/ActionsBar/Edit
 
 
 func popup():
@@ -50,6 +51,10 @@ func button_child_toggled(toggled : bool, tag : Tag):
 	else:
 		selected_tags.erase(tag)
 	
+	if selected_tags.size() > 1:
+		edit.hide()
+	else:
+		edit.show()
 
 
 func _on_trash_pressed() -> void:

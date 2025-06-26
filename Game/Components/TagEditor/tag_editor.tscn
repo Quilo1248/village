@@ -69,8 +69,6 @@ script = ExtResource("2_trxiv")
 [node name="Tag" parent="darken/Panel/VBoxContainer/EditorManager/TagColorManager" instance=ExtResource("1_jikt7")]
 layout_mode = 2
 size_flags_vertical = 4
-background_color = Color(0, 0, 0, 1)
-text_color = Color(1, 1, 1, 1)
 
 [node name="BackgroundColor" type="VBoxContainer" parent="darken/Panel/VBoxContainer/EditorManager/TagColorManager"]
 layout_mode = 2

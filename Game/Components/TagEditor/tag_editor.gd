@@ -6,13 +6,16 @@ signal tag_created
 @onready var description: TextEdit = $darken/Panel/VBoxContainer/EditorManager/TagTitlesManager/Description
 @onready var background_color_picker_hex: VBoxContainer = $darken/Panel/VBoxContainer/EditorManager/TagColorManager/BackgroundColor/BackgroundColorPickerHex
 @onready var text_color_picker_hex: VBoxContainer = $darken/Panel/VBoxContainer/EditorManager/TagColorManager/TextColor/TextColorPickerHex
+@onready var tag: Button = $darken/Panel/VBoxContainer/EditorManager/TagColorManager/Tag
 
 
 func popup():
-	title.text = ""
-	description.text = ""
+	title.clear()
+	title.text = "Tag"
+	description.clear()
 	background_color_picker_hex.reset()
 	text_color_picker_hex.reset()
+	tag.update_tag()
 	show()
 
 
