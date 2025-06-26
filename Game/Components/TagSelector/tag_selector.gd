@@ -56,8 +56,13 @@ func _on_trash_pressed() -> void:
 	var t = get_used_and_unused_tags()
 	
 	if all_in(selected_tags, t.unused):
-		print("pass")
-	else: print("nuh uh")
+		for tag in selected_tags:
+			SaveLoad.SaveFileData.tags.erase(tag)
+		selected_tags.clear()
+		SaveLoad._save()
+		refresh()
+	else: 
+		print("nuh uh")
 
 
 func get_used_and_unused_tags() -> Dictionary:
