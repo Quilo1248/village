@@ -9,4 +9,11 @@ func _on_pressed() -> void:
 
 func _on_tag_editor_selected(canceled: bool, title: String, description: String, background_color: Color, text_color: Color) -> void:
 	if not canceled:
-		pass
+		if tag_selector.selected_tags.size() == 1:
+			tag_selector.selected_tags[0].title = title
+			tag_selector.selected_tags[0].description = description
+			tag_selector.selected_tags[0].background_color = background_color
+			tag_selector.selected_tags[0].text_color = text_color
+			
+			SaveLoad._save()
+			tag_selector.refresh()
