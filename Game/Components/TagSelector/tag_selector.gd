@@ -51,10 +51,10 @@ func button_child_toggled(toggled : bool, tag : Tag):
 	else:
 		selected_tags.erase(tag)
 	
-	if selected_tags.size() > 1:
-		edit.hide()
-	else:
+	if selected_tags.size() == 1:
 		edit.show()
+	else:
+		edit.hide()
 
 
 func _on_trash_pressed() -> void:
