@@ -4,6 +4,12 @@ extends Button
 @onready var tag_editor: CanvasLayer = $"../../TagEditor"
 
 func _on_pressed() -> void:
+	tag_editor.default_title = tag_selector.selected_tags[0].title
+	tag_editor.default_description = tag_selector.selected_tags[0].description
+	tag_editor.default_background_color = tag_selector.selected_tags[0].background_color
+	tag_editor.default_text_color = tag_selector.selected_tags[0].text_color
+	tag_editor.default_tag = tag_selector.selected_tags[0]
+	
 	tag_editor.popup()
 
 
