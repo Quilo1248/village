@@ -11,35 +11,48 @@ func _ready():
 func update_tag():
 	text = tag.title
 	tooltip_text = tag.description
-	# Colors
-	_set_state_color("normal", tag.background_color)
-	_set_state_color("hover", tag.background_color.lightened(0.1))
-	_set_state_color("pressed", tag.background_color.darkened(0.15))
-	_set_state_color("focus", tag.background_color.lightened(0.1))
-	_set_state_color("disabled", tag.background_color.darkened(0.2))
-	
-	add_theme_color_override("font_color", tag.text_color)
-	add_theme_color_override("font_hover_color", tag.text_color.lightened(0.1))
-	add_theme_color_override("font_pressed_color", tag.text_color.darkened(0.15))
-	add_theme_color_override("font_hover_pressed_color", tag.text_color)
-	add_theme_color_override("font_focus_color", tag.text_color.lightened(0.1))
-	add_theme_color_override("font_disabled_color", tag.text_color.darkened(0.2))
+	set_button_colors(tag.background_color,tag.text_color)
 
 
-func _set_state_color(state: String, bg_color: Color, border_color = null, border_width: float = 0.0) -> void:
-	# Grab the stylebox for this button’s state
-	var sb = get_theme_stylebox(state)
-	if sb is StyleBoxFlat:
-		# Duplicate so we don’t modify the shared theme resource
-		sb = sb.duplicate()
-		# Set background color
-		sb.bg_color = bg_color
-		# Optionally set border if provided
-		if border_color != null:
-			sb.border_color = border_color
-			sb.border_width = border_width
-		# Apply override on this button for the given state
-		add_theme_stylebox_override(state, sb)
+func set_button_colors(background_color: Color, text_color: Color) -> void:
+	var states := [
+		"normal",
+		"hover",
+		"pressed",
+		"hover_pressed",
+		"disabled",
+		"focus"
+	]
+
+	for state in states:
+		var sb := get_theme_stylebox(state)
+		if sb is StyleBoxFlat:
+			var sb_new := sb.duplicate() as StyleBoxFlat
+
+			var final_bg_color := background_color
+			if state == "hover":
+				final_bg_color = background_color.lightened(0.1)
+			elif state == "pressed" or state == "hover_pressed":
+				final_bg_color = background_color.darkened(0.1)
+
+			sb_new.bg_color = final_bg_color
+			sb_new.border_color = final_bg_color
+
+			add_theme_stylebox_override(state, sb_new)
+
+	var font_color_roles := [
+		"font_color",
+		"font_hover_color",
+		"font_pressed_color",
+		"font_hover_pressed_color",
+		"font_disabled_color",
+		"font_focus_color"
+	]
+
+	for role in font_color_roles:
+		add_theme_color_override(role, text_color)
+
+	modulate = Color(1, 1, 1, 1)
 
 
 func _on_toggled(toggled_on: bool) -> void:
