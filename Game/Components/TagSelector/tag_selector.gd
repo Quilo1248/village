@@ -28,6 +28,9 @@ func refresh():
 		if child.is_in_group("tag"):
 			child.queue_free()
 	
+	for child in favorite_tags_container.get_children():
+		if child.is_in_group("tag"):
+			child.queue_free()
 	# get tags
 	SaveLoad._load()
 	var tags = SaveLoad.SaveFileData.tags
@@ -116,3 +119,15 @@ func all_in(listA: Array, listB: Array) -> bool:
 		if not dictB.has(item):
 			return false
 	return true
+
+
+func _on_favorite_pressed() -> void:
+	for i in selected_tags:
+		i.pinned = true
+	refresh()
+
+
+func _on_un_favorite_pressed() -> void:
+	for i in selected_tags:
+		i.pinned = false
+	refresh()

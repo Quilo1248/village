@@ -62,6 +62,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "♥"
 
+[node name="UnFavorite" type="Button" parent="Panel/VBoxContainer/ActionsBar"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "♡"
+
 [node name="Trash" type="Button" parent="Panel/VBoxContainer/ActionsBar"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -128,6 +134,8 @@ cancel_button_text = "Nevermind"
 
 [connection signal="pressed" from="Panel/VBoxContainer/ActionsBar/X" to="." method="_on_x_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/ActionsBar/Edit" to="Panel/VBoxContainer/ActionsBar/Edit" method="_on_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ActionsBar/Favorite" to="." method="_on_favorite_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/ActionsBar/UnFavorite" to="." method="_on_un_favorite_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/ActionsBar/Trash" to="." method="_on_trash_pressed"]
 [connection signal="selected" from="Panel/VBoxContainer/TagCreator" to="Panel/VBoxContainer/ScrollTags/TagsContainer/TagCreator" method="_on_tag_editor_selected"]
 [connection signal="tag_created" from="Panel/VBoxContainer/TagCreator" to="." method="_on_tag_editor_tag_created"]
