@@ -1,17 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyvf5sm2s4is3"]
+[gd_scene load_steps=10 format=3 uid="uid://dyvf5sm2s4is3"]
 
 [ext_resource type="Theme" uid="uid://bshfj8h4tboh4" path="res://Game/Resources/Theme/MainTheme.tres" id="1_dlme5"]
 [ext_resource type="PackedScene" uid="uid://h6qw0r3uhmco" path="res://Game/Components/Tag/tag.tscn" id="1_jikt7"]
 [ext_resource type="Script" uid="uid://duekjktwrl7uf" path="res://Game/Components/TagEditor/tag_editor.gd" id="1_on51a"]
+[ext_resource type="Script" uid="uid://rmhee03g3uke" path="res://Game/Resources/custom resources/Tags.gd" id="2_en1uv"]
 [ext_resource type="Script" uid="uid://d00aogdgf2037" path="res://Game/Components/TagEditor/editor_manager.gd" id="2_g0ois"]
 [ext_resource type="Script" uid="uid://yw6w6wo8d6on" path="res://Game/Components/TagEditor/tag_color_manager.gd" id="2_trxiv"]
 [ext_resource type="PackedScene" uid="uid://cyo503p60ci0r" path="res://Game/Components/ColorPickerHex/color_picker_hex.tscn" id="3_c3pkw"]
+
+[sub_resource type="Resource" id="Resource_ro1l1"]
+script = ExtResource("2_en1uv")
+title = ""
+description = ""
+background_color = Color(0, 0, 0, 1)
+text_color = Color(0, 0, 0, 1)
+pinned = false
+metadata/_custom_type_script = "uid://rmhee03g3uke"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g0ois"]
 bg_color = Color(0, 0, 0, 0.392157)
 
 [node name="TagEditor" type="CanvasLayer"]
 script = ExtResource("1_on51a")
+default_tag = SubResource("Resource_ro1l1")
 
 [node name="darken" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 400)

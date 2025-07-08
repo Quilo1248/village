@@ -22,13 +22,16 @@ func _on_x_pressed() -> void:
 
 
 func refresh():
+	# wipe previous children
 	for child in tags_container.get_children():
 		if child.is_in_group("tag"):
 			child.queue_free()
 	
+	# get tags
 	SaveLoad._load()
 	var tags = SaveLoad.SaveFileData.tags
 	
+	# spawn in all tags
 	for i in tags.size():
 		var tag = TAG.instantiate()
 		tag.index = i
@@ -38,6 +41,8 @@ func refresh():
 		
 		tag.toggled_tag.connect(button_child_toggled)
 		tags_container.add_child(tag)
+	
+	# spawn in favrotited tags
 
 
 func _on_tag_editor_tag_created() -> void:

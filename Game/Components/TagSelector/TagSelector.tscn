@@ -114,11 +114,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 2
 last_wrap_alignment = 1
 
-[node name="TagCreator" parent="Panel/VBoxContainer/ScrollTags/TagsContainer" node_paths=PackedStringArray("TagEditor") instance=ExtResource("2_fuwcd")]
+[node name="TagCreator" parent="Panel/VBoxContainer/ScrollTags/TagsContainer" node_paths=PackedStringArray("TagCreator") instance=ExtResource("2_fuwcd")]
 custom_minimum_size = Vector2(58, 58)
 layout_mode = 2
 script = ExtResource("4_dj87t")
-TagEditor = NodePath("../../../TagCreator")
+TagCreator = NodePath("../../../TagCreator")
 
 [node name="ConfirmDeleteDialog" type="ConfirmationDialog" parent="."]
 ok_button_text = "OBLITIRATE!"

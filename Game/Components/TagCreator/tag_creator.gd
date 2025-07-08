@@ -1,10 +1,10 @@
 extends Button
 
-@export var TagEditor : CanvasLayer
+@export var TagCreator : CanvasLayer
 
 
 func _on_pressed() -> void:
-	TagEditor.popup()
+	TagCreator.popup()
 
 
 func _on_tag_editor_selected(canceled: bool, title: String, description: String, background_color: Color, text_color: Color) -> void:
