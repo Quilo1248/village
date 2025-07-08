@@ -16,7 +16,7 @@ func _on_tag_editor_selected(canceled: bool, title: String, description: String,
 		new_tag.description = description
 		new_tag.background_color = background_color
 		new_tag.text_color = text_color
-		new_tag.pinned = false
+		new_tag.pinned = true
 		
 		SaveLoad.SaveFileData.tags.append(new_tag)
 		SaveLoad._save()

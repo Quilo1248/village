@@ -4,6 +4,7 @@ signal closed
 const TAG = preload("res://Game/Components/Tag/tag.tscn")
 var selected_tags : Array[Tag]
 @onready var tags_container: HFlowContainer = $Panel/VBoxContainer/ScrollTags/TagsContainer
+@onready var favorite_tags_container: HBoxContainer = $Panel/VBoxContainer/ScrollFavoriteTags/FavoriteTagsContainer
 @onready var selected_tags_display: VBoxContainer = $"../SelectedTagsDisplay"
 @onready var donut_timer: AspectRatioContainer = $"../DonutTimer"
 @onready var edit: Button = $Panel/VBoxContainer/ActionsBar/Edit
@@ -32,6 +33,8 @@ func refresh():
 	var tags = SaveLoad.SaveFileData.tags
 	
 	# spawn in all tags
+	var pinned_tags : Array[Button]
+	
 	for i in tags.size():
 		var tag = TAG.instantiate()
 		tag.index = i
@@ -39,10 +42,14 @@ func refresh():
 		if tags[i] in selected_tags:
 			tag.button_pressed = true
 		
+		if tag.tag.pinned:
+			pinned_tags.append(tag)
+			var p_tag = tag.duplicate()
+			favorite_tags_container.add_child(p_tag)
+		
 		tag.toggled_tag.connect(button_child_toggled)
 		tags_container.add_child(tag)
 	
-	# spawn in favrotited tags
 
 
 func _on_tag_editor_tag_created() -> void:
