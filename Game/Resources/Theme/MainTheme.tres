@@ -1878,7 +1878,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2fmd"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hbytp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yooe"]
 content_margin_left = 4.0
@@ -1898,6 +1898,7 @@ content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(0.156863, 0.156863, 0.156863, 1)
+skew = Vector2(0.1, 0)
 border_color = Color(0.121283, 0, 0.911376, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
@@ -1917,26 +1918,9 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0sbr"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43e7d"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+skew = Vector2(0.1, 0)
 
 [sub_resource type="Image" id="Image_c2fmd"]
 data = {
@@ -3041,11 +3025,11 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/fonts/font = SubResource("FontFile_nncmo")
 Button/styles/disabled = SubResource("StyleBoxFlat_it12d")
-Button/styles/focus = SubResource("StyleBoxFlat_c2fmd")
+Button/styles/focus = SubResource("StyleBoxEmpty_hbytp")
 Button/styles/hover = SubResource("StyleBoxFlat_5yooe")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_hbytp")
 Button/styles/normal = SubResource("StyleBoxFlat_c3dmn")
-Button/styles/pressed = SubResource("StyleBoxFlat_f0sbr")
+Button/styles/pressed = SubResource("StyleBoxFlat_43e7d")
 Label/colors/font_color = Color(0.156863, 0.156863, 0.156863, 1)
 Label/colors/font_outline_color = Color(0.976471, 0.960784, 0.843137, 1)
 Label/colors/font_shadow_color = Color(0.156863, 0.156863, 0.156863, 0)
