@@ -124,10 +124,12 @@ func all_in(listA: Array, listB: Array) -> bool:
 func _on_favorite_pressed() -> void:
 	for i in selected_tags:
 		i.pinned = true
+	SaveLoad._save()
 	refresh()
 
 
 func _on_un_favorite_pressed() -> void:
 	for i in selected_tags:
 		i.pinned = false
+	SaveLoad._save()
 	refresh()
