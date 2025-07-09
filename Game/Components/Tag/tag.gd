@@ -57,3 +57,7 @@ func set_button_colors(background_color: Color, text_color: Color) -> void:
 
 func _on_toggled(toggled_on: bool) -> void:
 	emit_signal("toggled_tag", toggled_on, tag)
+
+
+func connected_tag_toggled(toggle : bool):
+	button_pressed = toggle

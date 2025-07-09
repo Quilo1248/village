@@ -46,9 +46,16 @@ func refresh():
 			tag.button_pressed = true
 		
 		if tag.tag.pinned:
-			pinned_tags.append(tag)
-			var p_tag = tag.duplicate()
+			var p_tag = TAG.instantiate()
+			p_tag.index = i
+			p_tag.tag = tags[i]
+			p_tag.button_pressed = tag.button_pressed
+			
+			tag.toggled.connect(Callable(p_tag, "connected_tag_toggled"))
+			p_tag.toggled.connect(Callable(tag, "connected_tag_toggled"))
+			
 			favorite_tags_container.add_child(p_tag)
+			pinned_tags.append(tag)
 		
 		tag.toggled_tag.connect(button_child_toggled)
 		tags_container.add_child(tag)
