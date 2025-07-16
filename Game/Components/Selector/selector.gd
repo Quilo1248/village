@@ -1,4 +1,4 @@
-extends Control
+extends HBoxContainer
 
 signal selection_changed(selection)
 var selected := "TIMER" # using this 'TIMER'/'STOPWATCH' to align with the timer donut script

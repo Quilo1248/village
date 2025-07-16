@@ -3,7 +3,7 @@ extends Control
 @onready var donut_timer: AspectRatioContainer = $StackComponents/DonutTimer
 @onready var time_display: Label = $StackComponents/DonutTimer/TimeDisplay
 @onready var display_manager: Node = $DisplayManager
-@onready var selector: Control = $StackComponents/Selector
+@onready var selector: HBoxContainer = $StackComponents/Selector
 @onready var start: Button = $StackComponents/CenterContainer/Start
 
 
@@ -14,7 +14,6 @@ func _notification(what):
 
 
 func screen_resized():
-	print("resized")
 	display_manager.update_displays(donut_timer.current_hours, donut_timer.current_minutes, donut_timer.current_seconds)
 
 
