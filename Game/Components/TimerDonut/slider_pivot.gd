@@ -6,6 +6,7 @@ extends Node2D
 
 signal time_just_set(hours, minutes, seconds)
 @export var snap := 6.0 # degrees
+@export var radius := 256.0
 var enable_seconds := false
 @onready var color_manager: Node = $"../../DisplayManager/ColorManager"
 

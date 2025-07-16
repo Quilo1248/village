@@ -15,8 +15,8 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0mkad"]
 gradient = SubResource("Gradient_0mkad")
-width = 96
-height = 96
+width = 48
+height = 48
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -26,14 +26,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -256.0
-offset_right = 256.0
-offset_bottom = 256.0
+offset_left = -162.0
+offset_top = -360.0
+offset_right = 94.0
+offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(256, 256)
+size_flags_horizontal = 3
+size_flags_vertical = 6
 script = ExtResource("1_skghj")
 
 [node name="DonutValueDisplay" type="TextureProgressBar" parent="."]
@@ -50,7 +50,7 @@ tint_progress = Color(0, 1, 0, 1)
 script = ExtResource("2_fy1hg")
 
 [node name="SliderPivot" type="Node2D" parent="DonutValueDisplay"]
-position = Vector2(256, 256)
+position = Vector2(128, 128)
 script = ExtResource("3_q8wm5")
 
 [node name="SliderButton" type="Button" parent="DonutValueDisplay/SliderPivot"]
@@ -60,19 +60,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -270.0
-offset_right = 48.0
-offset_bottom = -174.0
+offset_left = -24.0
+offset_top = -134.78
+offset_right = 24.0
+offset_bottom = -86.78
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(48, 48)
+pivot_offset = Vector2(24, 24)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("3_0mkad")
 
 [node name="ButtonSprite" type="Sprite2D" parent="DonutValueDisplay/SliderPivot/SliderButton"]
-position = Vector2(48, 48)
+position = Vector2(24, 24)
 texture = SubResource("GradientTexture2D_0mkad")
 
 [node name="DisplayManager" type="Node" parent="."]

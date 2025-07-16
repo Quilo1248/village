@@ -5,5 +5,7 @@
 [node name="SelectedTagsDisplay" type="VBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 0
 script = ExtResource("1_l174c")

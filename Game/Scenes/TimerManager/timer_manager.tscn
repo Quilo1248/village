@@ -20,86 +20,69 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qbsx1")
 
-[node name="CoinsDisplay" parent="." instance=ExtResource("2_mg0fu")]
-layout_mode = 1
-offset_top = 12.195
-offset_bottom = 43.195
-
-[node name="Selector" parent="." instance=ExtResource("1_dqmun")]
-layout_mode = 1
-offset_top = -212.0
-offset_bottom = -212.0
-
-[node name="DonutTimer" parent="." instance=ExtResource("1_gogte")]
-layout_mode = 1
-
-[node name="TimeDisplay" parent="DonutTimer" instance=ExtResource("2_dqmun")]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "h:mm:ss"
-
 [node name="DisplayManager" type="Node" parent="."]
 script = ExtResource("5_mg0fu")
 
 [node name="TagSelector" parent="." instance=ExtResource("7_i5xu4")]
 visible = false
 
-[node name="TagPopupPrompt" parent="." instance=ExtResource("7_wccyj")]
+[node name="StackComponents" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_top = 137.0
-offset_bottom = 168.0
-
-[node name="SelectedTagsDisplay" parent="." instance=ExtResource("9_jlhgg")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 178.0
-offset_right = 21.0
-offset_bottom = 275.0
+anchors_preset = -1
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
 
-[node name="Start" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -23.0
-offset_top = -75.48
-offset_right = 23.0
-offset_bottom = -44.48
-grow_horizontal = 2
-grow_vertical = 0
+[node name="CoinsDisplay" parent="StackComponents" instance=ExtResource("2_mg0fu")]
+layout_mode = 2
+
+[node name="Selector" parent="StackComponents" instance=ExtResource("1_dqmun")]
+layout_mode = 2
+
+[node name="DonutTimer" parent="StackComponents" instance=ExtResource("1_gogte")]
+layout_mode = 2
+size_flags_vertical = 3
+stretch_mode = 3
+
+[node name="TimeDisplay" parent="StackComponents/DonutTimer" instance=ExtResource("2_dqmun")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 26
+text = "h:mm:ss"
+
+[node name="TagPopupPrompt" parent="StackComponents" instance=ExtResource("7_wccyj")]
+layout_mode = 2
+
+[node name="SelectedTagsDisplay" parent="StackComponents" instance=ExtResource("9_jlhgg")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.5
+
+[node name="CenterContainer" type="CenterContainer" parent="StackComponents"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="StackComponents/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 theme = ExtResource("9_4vab2")
 disabled = true
 text = "Start"
 
-[node name="Stop" type="Button" parent="."]
+[node name="Stop" type="Button" parent="StackComponents/CenterContainer"]
 visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -23.0
-offset_top = -75.48
-offset_right = 23.0
-offset_bottom = -44.48
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
 theme = ExtResource("9_4vab2")
 text = "Stop"
 
-[connection signal="selection_changed" from="Selector" to="." method="_on_selector_selection_changed"]
-[connection signal="time_updated" from="DonutTimer" to="." method="_on_donut_timer_time_updated"]
-[connection signal="closed" from="TagSelector" to="SelectedTagsDisplay" method="_on_tag_selector_closed"]
-[connection signal="pressed" from="TagPopupPrompt" to="TagSelector" method="popup"]
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Stop" to="." method="_on_stop_pressed"]
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="closed" from="TagSelector" to="StackComponents/SelectedTagsDisplay" method="_on_tag_selector_closed"]
+[connection signal="selection_changed" from="StackComponents/Selector" to="." method="_on_selector_selection_changed"]
+[connection signal="time_updated" from="StackComponents/DonutTimer" to="." method="_on_donut_timer_time_updated"]
+[connection signal="pressed" from="StackComponents/TagPopupPrompt" to="TagSelector" method="popup"]
+[connection signal="pressed" from="StackComponents/CenterContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="StackComponents/CenterContainer/Stop" to="." method="_on_stop_pressed"]

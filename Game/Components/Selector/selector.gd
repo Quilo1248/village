@@ -2,8 +2,8 @@ extends Control
 
 signal selection_changed(selection)
 var selected := "TIMER" # using this 'TIMER'/'STOPWATCH' to align with the timer donut script
-@onready var timer: Button = $HBoxContainer/Timer
-@onready var stop_watch: Button = $HBoxContainer/StopWatch
+@onready var timer: Button = $Timer
+@onready var stop_watch: Button = $StopWatch
 
 
 func _on_timer_toggled(toggled_on: bool) -> void:

@@ -5,9 +5,10 @@ const TAG = preload("res://Game/Components/Tag/tag.tscn")
 var selected_tags : Array[Tag]
 @onready var tags_container: HFlowContainer = $Panel/VBoxContainer/ScrollTags/TagsContainer
 @onready var favorite_tags_container: HBoxContainer = $Panel/VBoxContainer/ScrollFavoriteTags/FavoriteTagsContainer
-@onready var selected_tags_display: VBoxContainer = $"../SelectedTagsDisplay"
-@onready var donut_timer: AspectRatioContainer = $"../DonutTimer"
 @onready var edit: Button = $Panel/VBoxContainer/ActionsBar/Edit
+# external
+@onready var selected_tags_display: VBoxContainer = $"../StackComponents/SelectedTagsDisplay"
+@onready var donut_timer: AspectRatioContainer = $"../StackComponents/DonutTimer"
 
 
 func popup():

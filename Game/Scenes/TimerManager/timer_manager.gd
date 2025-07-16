@@ -1,14 +1,21 @@
 extends Control
 
-@onready var donut_timer: AspectRatioContainer = $DonutTimer
-@onready var time_display: Label = $DonutTimer/TimeDisplay
+@onready var donut_timer: AspectRatioContainer = $StackComponents/DonutTimer
+@onready var time_display: Label = $StackComponents/DonutTimer/TimeDisplay
 @onready var display_manager: Node = $DisplayManager
-@onready var selector: Control = $Selector
-@onready var start: Button = $Start
+@onready var selector: Control = $StackComponents/Selector
+@onready var start: Button = $StackComponents/CenterContainer/Start
 
 
-func _ready() -> void:
-	pass
+func _notification(what):
+	if what == NOTIFICATION_RESIZED:
+		await get_tree().current_scene.ready
+		screen_resized()
+
+
+func screen_resized():
+	print("resized")
+	display_manager.update_displays(donut_timer.current_hours, donut_timer.current_minutes, donut_timer.current_seconds)
 
 
 func _on_donut_timer_time_updated(hours: Variant, minutes: Variant, seconds: Variant) -> void:
@@ -45,3 +52,8 @@ func start_button_disable(selection):
 		start.disabled = false
 	else:
 		start.disabled = true
+
+
+func _on_resized() -> void:
+	if display_manager != null:
+		display_manager.update_displays(donut_timer.current_hours, donut_timer.current_minutes, donut_timer.current_seconds)
