@@ -8,7 +8,8 @@ signal time_just_set(hours, minutes, seconds)
 @export var snap := 6.0 # degrees
 @export var radius := 256.0
 var enable_seconds := false
-@onready var color_manager: Node = $"../../DisplayManager/ColorManager"
+@onready var color_manager: Node = $"../../../DisplayManager/ColorManager"
+
 
 ## Makes the SliderPivot point toward the mouse and returns the converted time.
 ## returns a dictionary{"hours", "minutes", "seconds"}

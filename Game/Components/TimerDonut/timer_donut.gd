@@ -24,7 +24,7 @@ var tags : Array[Tag]
 @onready var display_manager: Node = $DisplayManager
 @onready var color_manager: Node = $DisplayManager/ColorManager
 @onready var timer: Timer = $Timer
-@onready var slider_pivot: Node2D = $DonutValueDisplay/SliderPivot
+@onready var slider_pivot: Node2D = $SizeDonut/DonutValueDisplay/SliderPivot
 
 
 func _ready() -> void:
@@ -48,8 +48,8 @@ func _on_slider_pivot_time_just_set(hours: Variant, minutes: Variant, seconds: V
 	current_hours = hours
 	current_minutes = minutes
 	current_seconds = seconds
-	update_displays()
 	emit_signal("time_updated", current_hours, current_minutes, current_seconds)
+	update_displays()
 
 
 func start_timer(mode : TimerState):

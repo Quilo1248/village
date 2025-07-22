@@ -3,8 +3,8 @@ extends Node
 #colors when the update_colors function is called
 
 @export var colors : Array[Color]
-@onready var donut_value_display: TextureProgressBar = $"../../DonutValueDisplay"
-@onready var button_sprite: Sprite2D = $"../../DonutValueDisplay/SliderPivot/SliderButton/ButtonSprite"
+@onready var donut_value_display: TextureProgressBar = $"../../SizeDonut/DonutValueDisplay"
+@onready var button_sprite: Sprite2D = $"../../SizeDonut/DonutValueDisplay/SliderPivot/SliderButton/ButtonSprite"
 
 
 func update_colors(hours : int, minutes : int, seconds : int):

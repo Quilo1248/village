@@ -1,7 +1,7 @@
 extends Button
 #this node will be responsible for alarming SliderPivot to look at the mouse in SET mode
 #and be responible for doing nothing but look good in other states
-@onready var donut_timer: AspectRatioContainer = $"../../.."
+@onready var donut_timer: AspectRatioContainer = $"../../../.."
 
 signal button_held
 var held:= false
