@@ -33,7 +33,7 @@ offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
+size_flags_vertical = 3
 script = ExtResource("1_skghj")
 
 [node name="SizeDonut" type="Node2D" parent="."]
@@ -75,19 +75,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -251.0
-offset_right = 24.0
-offset_bottom = -203.0
+offset_left = -48.0
+offset_top = -275.61
+offset_right = 48.0
+offset_bottom = -179.61
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(24, 24)
+pivot_offset = Vector2(48, 48)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("3_0mkad")
 
 [node name="ButtonSprite" type="Sprite2D" parent="SizeDonut/DonutValueDisplay/SliderPivot/SliderButton"]
-position = Vector2(24, 24)
+position = Vector2(48, 48)
 texture = SubResource("GradientTexture2D_0mkad")
 
 [node name="DisplayManager" type="Node" parent="."]

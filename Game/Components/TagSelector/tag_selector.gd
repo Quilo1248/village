@@ -8,7 +8,7 @@ var selected_tags : Array[Tag]
 @onready var edit: Button = $Panel/VBoxContainer/ActionsBar/Edit
 # external
 @onready var selected_tags_display: VBoxContainer = $"../StackComponents/SelectedTagsDisplay"
-@onready var donut_timer: AspectRatioContainer = $"../StackComponents/DonutTimer"
+@onready var donut_timer: Container = $"../StackComponents/DonutTimer"
 
 
 func popup():

@@ -1,6 +1,6 @@
 extends Control
 
-@onready var donut_timer: AspectRatioContainer = $StackComponents/DonutTimer
+@onready var donut_timer: Container = $StackComponents/DonutTimer
 @onready var time_display: Label = $StackComponents/DonutTimer/TimeDisplay
 @onready var display_manager: Node = $DisplayManager
 @onready var selector: HBoxContainer = $StackComponents/Selector

@@ -5,7 +5,7 @@ enum TimerState {
 	TIMER,
 	STOPWATCH,
 }
-@onready var donut_timer: AspectRatioContainer = $"../StackComponents/DonutTimer"
+@onready var donut_timer: Container = $"../StackComponents/DonutTimer"
 @onready var time_display: Label = $"../StackComponents/DonutTimer/TimeDisplay"
 @onready var selector: Control = $"../StackComponents/Selector"
 @onready var start: Button = $"../StackComponents/CenterContainer/Start"
