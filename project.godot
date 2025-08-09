@@ -33,11 +33,6 @@ version_control/autoload_on_startup=true
 [file_customization]
 
 folder_colors={
-"res://Game/": "blue",
-"res://Game/Art/": "teal",
-"res://Game/Components/": "purple",
-"res://Game/Scenes/": "yellow",
-"res://Game/Scripts/": "orange",
 "res://addons/": "pink"
 }
 
