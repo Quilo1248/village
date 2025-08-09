@@ -33,7 +33,10 @@ version_control/autoload_on_startup=true
 [file_customization]
 
 folder_colors={
-"res://addons/": "pink"
+"res://addons/": "pink",
+"res://components/": "yellow",
+"res://config/": "blue",
+"res://game/": "green"
 }
 
 [global_group]
