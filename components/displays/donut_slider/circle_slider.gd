@@ -23,7 +23,7 @@ func _clamp_total_to_max_laps() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
-			var dist = cap_position.distance_to(event.position)
+			var dist = cap_2_position.distance_to(event.position)
 			var knob_radius = stroke_width / 2.0
 			if dist <= knob_radius + press_tolerance:
 				pressed = true

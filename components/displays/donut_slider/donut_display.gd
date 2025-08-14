@@ -3,12 +3,19 @@ extends Container
 class_name CircleDisplay
 
 @export_category("Visuals")
+@export var cap_1_enabled : bool = true
+@export var cap_2_enabled : bool = true
 @export var stroke_width : float:
 	set(width):
 		stroke_width = width
-		target_bg_width = stroke_width - 2
+		target_bg_width = inner_stroke_width
 		target_fg_width = stroke_width
-@export var inner_stroke_width : float
+@export var inner_stroke_width : float:
+	set(width):
+		inner_stroke_width = width
+		# Update target_bg_width when inner_stroke_width changes too
+		# This is important if you expect target_bg_width to reflect inner_stroke_width immediately
+		target_bg_width = inner_stroke_width
 @export var layer_colors : Array[Color]
 @export var anti_alias : bool
 @export_category("Values")
@@ -29,7 +36,7 @@ var lap : int:
 		elif l >= lap: # grow
 			lap = l
 			current_bg_width = stroke_width 
-			current_fg_width = stroke_width - 2
+			current_fg_width = inner_stroke_width
 			
 			current_bg_color = layer_colors[lap]
 			current_fg_color = layer_colors[lap]
@@ -39,8 +46,8 @@ var lap : int:
 			target_dot_color = layer_colors[lap + 1]
 		elif l <= lap: # shrink
 			lap = l
-			current_bg_width = stroke_width - 2
-			current_fg_width = stroke_width - 2
+			current_bg_width = inner_stroke_width
+			current_fg_width = inner_stroke_width
 			
 			current_bg_color = layer_colors[lap]
 			current_fg_color = layer_colors[lap + 1]
@@ -61,7 +68,8 @@ var current_dot_color : Color
 var target_dot_color : Color
 
 var center : Vector2
-var cap_position : Vector2
+var cap_1_position : Vector2
+var cap_2_position : Vector2
 
 
 func _ready() -> void:
@@ -95,23 +103,28 @@ func update_display():
 	var end : float = layer_value
 	end = deg_to_rad((end * 360) - 90)
 	
+	# round cap
+	cap_1_position = center + Vector2(cos(start), sin(start)) * radius
+	cap_2_position = center + Vector2(cos(end), sin(end)) * radius
+	
 	# actually draw
 	# bg
 	draw_circle(center, radius , bg_color, false, current_bg_width, anti_alias)
+	# draw the top round cap
+	if cap_1_enabled:
+		draw_circle(cap_1_position, stroke_width/2, current_fg_color, true, -1, anti_alias)
 	# progress
 	draw_arc(center, radius, start, end, 128, fg_color, current_fg_width, anti_alias)
-	# round cap
-	cap_position = center + Vector2(cos(end), sin(end)) * radius
-	
-	draw_circle(cap_position, stroke_width/2, current_dot_color, true, -1, anti_alias)
-	
+	# draw the bottom round cap
+	if cap_2_enabled:
+		draw_circle(cap_2_position, stroke_width/2, current_dot_color, true, -1, anti_alias)
 
 func update_variables(delta):
-	current_bg_width = lerp(current_bg_width, target_bg_width, delta * 10)
-	current_fg_width = lerp(current_fg_width, target_fg_width, delta * 10)
+	current_bg_width = lerp(current_bg_width, target_bg_width, delta * 5)
+	current_fg_width = lerp(current_fg_width, target_fg_width, delta * 5)
 	current_bg_color = current_bg_color.lerp(target_bg_color, delta * 10)
 	current_fg_color = current_fg_color.lerp(target_fg_color, delta * 5)
-	current_dot_color = current_dot_color.lerp(target_dot_color, delta * 10)
+	current_dot_color = current_dot_color.lerp(target_dot_color, delta * 5)
 
 func _process(delta: float) -> void:
 	update_variables(delta)
