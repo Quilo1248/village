@@ -11,13 +11,8 @@ config_version=5
 [application]
 
 config/name="Village"
-run/main_scene="uid://dr7upd8t7jnlm"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://Game/Art/Icons/godot_icon.svg"
-
-[autoload]
-
-SaveLoad="*res://Game/Scripts/Saving/SaveLoad.gd"
+config/icon="uid://dmnxdxq6qvrqn"
 
 [display]
 

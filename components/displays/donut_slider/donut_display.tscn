@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://3iej2lehvaw2"]
+
+[ext_resource type="Script" uid="uid://cp3ga6lfuemfx" path="res://components/displays/donut_slider/donut_display.gd" id="1_wlxhe"]
+
+[node name="DonutDisplay" type="Container"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wlxhe")
+stroke_width = 32.0
+inner_stroke_width = 29.765
+layer_colors = Array[Color]([Color(1, 0.639216, 0.666667, 1), Color(1, 0.792157, 0.635294, 1), Color(1, 0.968627, 0.639216, 1), Color(0.69757, 1, 0.59899, 1)])
+anti_alias = true
+max_laps = 3
+lap_value = 10.0

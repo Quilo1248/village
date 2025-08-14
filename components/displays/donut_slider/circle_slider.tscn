@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c08vr84wxtijh"]
+
+[ext_resource type="Script" uid="uid://cgbjnaunytiji" path="res://components/displays/donut_slider/circle_slider.gd" id="1_njqwe"]
+
+[node name="CircleSlider" type="Container"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+script = ExtResource("1_njqwe")
+press_tolerance = 30.0
+stroke_width = 73.73
+inner_stroke_width = 50.0
+layer_colors = Array[Color]([Color(1, 0.639216, 0.666667, 1), Color(1, 0.792157, 0.635294, 1), Color(1, 0.968627, 0.639216, 1), Color(0.69757, 1, 0.59899, 1), Color(0.536611, 1, 0.936724, 1)])
+anti_alias = true
+max_laps = 3
+lap_value = 10.0
+metadata/_custom_type_script = "uid://cp3ga6lfuemfx"
