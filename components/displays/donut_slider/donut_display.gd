@@ -18,6 +18,12 @@ class_name CircleDisplay
 		target_bg_width = inner_stroke_width
 @export var layer_colors : Array[Color]
 @export var anti_alias : bool
+
+@export_category("Animation")
+@export var width_speed : float = 5
+@export var color_change_speed : float = 5
+@export var cap_2_color_change_speed : float = 5
+
 @export_category("Values")
 @export var max_laps : int
 @export var lap_value : float
@@ -36,7 +42,7 @@ var lap : int:
 		elif l >= lap: # grow
 			lap = l
 			current_bg_width = stroke_width 
-			current_fg_width = inner_stroke_width
+			current_fg_width = stroke_width
 			
 			current_bg_color = layer_colors[lap]
 			current_fg_color = layer_colors[lap]
@@ -120,11 +126,11 @@ func update_display():
 		draw_circle(cap_2_position, stroke_width/2, current_dot_color, true, -1, anti_alias)
 
 func update_variables(delta):
-	current_bg_width = lerp(current_bg_width, target_bg_width, delta * 5)
-	current_fg_width = lerp(current_fg_width, target_fg_width, delta * 5)
-	current_bg_color = current_bg_color.lerp(target_bg_color, delta * 10)
-	current_fg_color = current_fg_color.lerp(target_fg_color, delta * 5)
-	current_dot_color = current_dot_color.lerp(target_dot_color, delta * 5)
+	current_bg_width = lerp(current_bg_width, target_bg_width, delta * width_speed)
+	current_fg_width = lerp(current_fg_width, target_fg_width, delta * width_speed)
+	current_bg_color = current_bg_color.lerp(target_bg_color, delta * color_change_speed)
+	current_fg_color = current_fg_color.lerp(target_fg_color, delta * color_change_speed)
+	current_dot_color = current_dot_color.lerp(target_dot_color, delta * cap_2_color_change_speed)
 
 func _process(delta: float) -> void:
 	update_variables(delta)
