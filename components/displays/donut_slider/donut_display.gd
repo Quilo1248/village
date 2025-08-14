@@ -13,8 +13,6 @@ class_name CircleDisplay
 @export var inner_stroke_width : float:
 	set(width):
 		inner_stroke_width = width
-		# Update target_bg_width when inner_stroke_width changes too
-		# This is important if you expect target_bg_width to reflect inner_stroke_width immediately
 		target_bg_width = inner_stroke_width
 @export var layer_colors : Array[Color]
 @export var anti_alias : bool
@@ -26,7 +24,11 @@ class_name CircleDisplay
 
 @export_category("Values")
 @export var max_laps : int
-@export var lap_value : float
+@export var lap_value : float = 1:
+	set(v):
+		lap_value = v
+		lap = int(value/ lap_value)
+		layer_value = (value - (lap * lap_value)) / lap_value
 @export var value : float:
 	set(v):
 		value = v
@@ -90,7 +92,6 @@ func _ready() -> void:
 	current_fg_width = 0
 	
 	queue_redraw()
-
 
 func _draw() -> void:
 	update_display()
