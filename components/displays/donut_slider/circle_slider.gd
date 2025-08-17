@@ -31,7 +31,11 @@ func _input(event: InputEvent) -> void:
 			var knob_radius = stroke_width / 2.0
 			if dist <= knob_radius + press_tolerance:
 				pressed = true
-				# Initialize previous angle to avoid a large first-frame jump
+				
+				# Keep current slider value instead of snapping to zero
+				_total_angle = (value / lap_value) * 360.0
+				
+				# Initialize previous angle based on mouse position
 				var mouse = get_global_mouse_position()
 				var ang_rad = atan2(mouse.y - (global_position.y + center.y),
 									mouse.x - (global_position.x + center.x))
@@ -40,6 +44,7 @@ func _input(event: InputEvent) -> void:
 		elif event.is_released():
 			pressed = false
 			_has_prev_angle = false
+
 
 func _process(delta: float) -> void:
 	if pressed:

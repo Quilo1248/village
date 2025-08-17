@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://br0pfdgmts78c"]
+
+[ext_resource type="Script" uid="uid://cgbjnaunytiji" path="res://components/displays/donut_slider/circle_slider.gd" id="1_7qrh5"]
+[ext_resource type="Script" uid="uid://dtr5jukl1glyo" path="res://game/scenes/test_stuff/test_set.gd" id="1_jlkhj"]
+
+[node name="TestSet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -81.0
+offset_bottom = -331.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jlkhj")
+
+[node name="CircleSlider" type="Container" parent="."]
+layout_mode = 0
+offset_right = 231.0
+offset_bottom = 376.0
+script = ExtResource("1_7qrh5")
+stroke_width = 32.0
+inner_stroke_width = 20.11
+layer_colors = Array[Color]([Color(1, 0.737256, 0.820148, 1), Color(1, 0.96828, 0.884537, 1), Color(0.250423, 1, 0.851513, 1), Color(0.857278, 0.899643, 1, 1)])
+anti_alias = true
+max_laps = 3
+lap_value = 60.0
+value = 90.0
+metadata/_custom_type_script = "uid://cgbjnaunytiji"

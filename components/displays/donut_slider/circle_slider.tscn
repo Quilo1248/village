@@ -20,4 +20,5 @@ width_speed = 2.0
 color_change_speed = 3.0
 cap_2_color_change_speed = 3.0
 max_laps = 3
+value = 0.005
 metadata/_custom_type_script = "uid://cp3ga6lfuemfx"

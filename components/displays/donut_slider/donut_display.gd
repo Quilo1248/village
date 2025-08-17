@@ -34,11 +34,14 @@ class_name CircleDisplay
 		value = v
 		lap = int(value/ lap_value)
 		layer_value = (value - (lap * lap_value)) / lap_value
+		
 
 var radius : float
 var layer_value : float
 var lap : int:
 	set(l):
+		var max_laps_for_colors = layer_colors.size() - 1
+		print(max_laps_for_colors)
 		if lap == l:
 			return
 		elif l >= lap: # grow
@@ -46,23 +49,23 @@ var lap : int:
 			current_bg_width = stroke_width 
 			current_fg_width = stroke_width
 			
-			current_bg_color = layer_colors[lap]
-			current_fg_color = layer_colors[lap]
+			current_bg_color = layer_colors[clamp(lap, 0, max_laps_for_colors)]
+			current_fg_color = layer_colors[clamp(lap, 0, max_laps_for_colors)]
 			
-			target_bg_color = layer_colors[lap]
-			target_fg_color = layer_colors[lap + 1]
-			target_dot_color = layer_colors[lap + 1]
+			target_bg_color = layer_colors[clamp(lap, 0, max_laps_for_colors)]
+			target_fg_color = layer_colors[clamp(lap + 1, 0, max_laps_for_colors)]
+			target_dot_color = layer_colors[clamp(lap + 1, 0, max_laps_for_colors)]
 		elif l <= lap: # shrink
 			lap = l
 			current_bg_width = inner_stroke_width
 			current_fg_width = inner_stroke_width
 			
-			current_bg_color = layer_colors[lap]
-			current_fg_color = layer_colors[lap + 1]
+			current_bg_color = layer_colors[clamp(lap, 0, max_laps_for_colors)]
+			current_fg_color = layer_colors[clamp(lap + 1, 0, max_laps_for_colors)]
 			
-			target_bg_color = layer_colors[lap]
-			target_fg_color = layer_colors[lap + 1]
-			target_dot_color = layer_colors[lap + 1]
+			target_bg_color = layer_colors[clamp(lap, 0, max_laps_for_colors)]
+			target_fg_color = layer_colors[clamp(lap + 1, 0, max_laps_for_colors)]
+			target_dot_color = layer_colors[clamp(lap + 1, 0, max_laps_for_colors)]
 
 var current_bg_width : float
 var current_fg_width : float
