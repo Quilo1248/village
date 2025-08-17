@@ -4,7 +4,9 @@ class_name CircleSlider
 
 # Interaction
 var pressed: bool = false
+@export_category("Interaction")
 @export var press_tolerance: float = 10.0
+@export var enabled: bool = true
 
 # Internal angle tracking (degrees)
 var _prev_angle: float = 0.0
@@ -21,6 +23,8 @@ func _clamp_total_to_max_laps() -> void:
 		_total_angle = clamp(_total_angle, min_angle, max_angle)
 
 func _input(event: InputEvent) -> void:
+	if not enabled:
+		return
 	if event is InputEventMouseButton:
 		if event.pressed:
 			var dist = cap_2_position.distance_to(event.position)
